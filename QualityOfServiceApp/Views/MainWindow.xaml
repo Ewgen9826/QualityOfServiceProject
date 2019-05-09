@@ -1,0 +1,68 @@
+﻿<Window x:Class="QualityOfServiceApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QualityOfServiceApp"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+        xmlns:pages="clr-namespace:QualityOfServiceApp.Pages"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" 
+        WindowStyle="None"
+        Title="MainWindow" MinHeight="600" MinWidth="800">
+    <Grid Background="#ffe4e4e4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="{StaticResource PrimaryHueDarkBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Grid.Column="0"
+                                     Foreground="#fff"
+                                     Height="30" Width="30" 
+                                     VerticalAlignment="Center" 
+                                     Kind="Bank"
+                                     Margin="10 0"/>
+            <TextBlock VerticalAlignment="Center" 
+                       Text="Quality of Service"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Foreground="#fff"
+                       Margin="10"
+                       Grid.Column="1"
+                       HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Grid.Column="2" Margin="0 0 10 0">
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        Background="#fff" BorderBrush="#fff">
+                    <materialDesign:PackIcon Kind="WindowMinimize"
+                                             Width="20" Height="20"
+                                             Foreground="#536dfe"/>
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        Margin="8 5"
+                        Background="#fff" BorderBrush="#fff">
+                    <materialDesign:PackIcon Kind="WindowMaximize"
+                                             Width="20" Height="20"
+                                             Foreground="#536dfe"/>
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                    Background="#fff" BorderBrush="#fff">
+                    <materialDesign:PackIcon Kind="WindowClose"
+                                         Height="25" Width="25" 
+                                         Foreground="#ef5350"
+                                         />
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="content"
+                  Grid.Row="1"
+              MinHeight="500" MinWidth="700">
+            <pages:Login></pages:Login>
+        </Grid>
+    </Grid>
+</Window>

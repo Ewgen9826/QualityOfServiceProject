@@ -1,0 +1,125 @@
+﻿<UserControl x:Class="QualityOfServiceApp.Pages.Questionnaire"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
+             xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+             xmlns:model="clr-namespace:MaterialDesignExtensions.Model;assembly=MaterialDesignExtensions"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             MinHeight="500" MinWidth="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--Header Section-->
+        <Grid>
+            <Button HorizontalAlignment="Left"
+                    Style="{StaticResource MaterialDesignFlatButton}">
+            <materialDesign:PackIcon Kind="ArrowLeft"
+                                     VerticalAlignment="Center"
+                                     Margin="20 0"
+                                     Height="25" Width="25"
+                                     Foreground="#FF88BB88"
+                                     />
+            </Button>
+            <TextBlock Text="Анкета"
+                       HorizontalAlignment="Center"
+                       Style="{StaticResource MaterialDesignHeadlineTextBlock}"/>
+        </Grid>
+
+        <!--Stepper Section-->
+        <controls:Stepper IsLinear="False" 
+                          Layout="Horizontal"
+                          Margin="10"
+                          Grid.Row="1"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            
+            <model:Step>
+                <model:Step.Header>
+                    <TextBlock Foreground="#000"
+                               Style="{StaticResource MaterialDesignTitleTextBlock}"
+                               Text="Подразделение"
+                               FontSize="16"/>
+                </model:Step.Header>
+                <model:Step.Content>
+                    <local:Subdivision/>
+                </model:Step.Content>
+            </model:Step>
+            
+            <model:Step>
+                <model:Step.Header>
+                    <TextBlock Foreground="#000"
+                               Text="Личные данные" 
+                               Style="{StaticResource MaterialDesignTitleTextBlock}"
+                               FontSize="16"/>
+                </model:Step.Header>
+                <model:Step.Content>
+                    <local:PersonalData/>
+                </model:Step.Content>
+            </model:Step>
+            
+            <model:Step>
+                <model:Step.Header>
+                    <TextBlock Foreground="#000"
+                               Text="Выбор услуги"
+                               FontSize="16"
+                               Style="{StaticResource MaterialDesignTitleTextBlock}"/>
+                </model:Step.Header>
+                <model:Step.Content>
+                    <local:ServiceChoice/>
+                </model:Step.Content>
+            </model:Step>
+            
+            <model:Step>
+                <model:Step.Header>
+                    <TextBlock Foreground="#000"
+                               Text="Оценка"
+                               FontSize="16"
+                               Style="{StaticResource MaterialDesignTitleTextBlock}"/>
+                </model:Step.Header>
+                <model:Step.Content>
+                    <local:Ratings/>
+                </model:Step.Content>
+            </model:Step>
+            
+            <controls:Stepper.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="pack://application:,,,/MaterialDesignExtensions;component/Themes/MaterialDesignLightTheme.xaml" />
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </controls:Stepper.Resources>
+        </controls:Stepper>
+
+        <!--Button Section-->
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    Grid.Row="2">
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    Foreground="#FF88BB88"
+                    Margin="0 20 0 20">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ArrowLeft" 
+                                             VerticalAlignment="Center"
+                                             Height="25" Width="25"/>
+                    <TextBlock Text="Назад" Margin="10 0" 
+                               FontSize="18"/>
+                </StackPanel>
+            </Button>
+            <Button Foreground="#fff" Margin="0 0 20 0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Далее" Margin="10 0" 
+                               VerticalAlignment="Center"
+                               FontSize="18"/>
+                    <materialDesign:PackIcon Kind="ArrowRight" 
+                                             VerticalAlignment="Center"
+                                             Height="25" Width="25"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

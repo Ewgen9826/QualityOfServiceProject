@@ -1,0 +1,694 @@
+﻿<UserControl x:Class="QualityOfServiceApp.Pages.Ratings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!--Материальность-->
+                <Expander Header="Материальность" 
+                          Background="#ffe4e4e4">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       FontSize="16"
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Банк имеет современные оргтехнику и оборудование
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Помещения банка в отличном состоянии
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Работника банка имеют приятную наружность и опрятны
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Внешний вид информационных материалов банка (буклетов, проспектов) привлекателен
+                            </TextBlock>
+                            <Grid Margin="20 0" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                
+                <!--Надежность-->
+                <Expander Header="Надежность" 
+                  Background="#ffe4e4e4"
+                  Grid.Row="1">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       FontSize="16"
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Банк  выполняет свои обещания оказать услугу к назначенному времени
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Если у клиентов случаются проблемы, то банк искренне пытается их решить
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                У банка надёжная репутация
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Банк предоставляет услуги аккуратно и в срок
+                            </TextBlock>
+                            <Grid Margin="20 0" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Банк избегает ошибок и неточностей в своих операциях
+                            </TextBlock>
+                            <Grid Margin="20 0" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                
+                <!--Отзыачивость-->
+                <Expander Header="Отзывчивость" 
+                  Grid.Row="2"
+                  Background="#ffe4e4e4">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       FontSize="16"
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+               Сотрудники банка дисциплинированны
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+               Сотрудники банка оказывают услуги быстро и оперативно
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Сотрудники банка всегда помогают клиентам решить их проблемы
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Сотрудники банка быстро реагируют на просьбы клиентов
+                            </TextBlock>
+                            <Grid Margin="20 0" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                
+                <!--Убежденность-->
+                <Expander Header="Убежденность"
+                  Background="#ffe4e4e4"
+                  Grid.Row="3">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       FontSize="16"
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+               Между клиентами и сотрудниками банка существует атмосфера доверия и взаимопонимания
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+               В отношениях с банком клиенты чувствовуют себя безопасно
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Сотрудники банка вежливы с клиентами
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Руководство банка оказывает всяческую поддержку сотрудникам для эффективного обслуживания клиентов
+                            </TextBlock>
+                            <Grid Margin="20 0" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+                
+                <!--Сочувствие-->
+                <Expander Header="Сочувствие" 
+                  Background="#ffe4e4e4"
+                  Grid.Row="4">
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       FontSize="16"
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                К клиентам в банке применяется индивидуальный подход
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" 
+                                       Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Сотрудники банка принимают личное участие в решении проблем клиентов
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Сотрудники банка знают потребности своих клиентов
+                            </TextBlock>
+                            <Grid Margin="20 0"  HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+                Сотрудники банка ориентируются на проблемы клиентов
+                            </TextBlock>
+                            <Grid Margin="20 0" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                            <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                       FontSize="16"
+                       Style="{StaticResource MaterialDesignTitleTextBlock}">
+               Время работы банка удобно для всех клиентов
+                            </TextBlock>
+                            <Grid Margin="20 0" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal" Margin="0 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                            Grid.Column="1" Margin="20 10">
+                                    <TextBlock VerticalAlignment="Center"
+                               FontSize="12"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+                </Expander>
+            </Grid>
+        </ScrollViewer>
+        <Expander ExpandDirection="Left"
+                  Background="#FF88BB88"
+                  Grid.Column="1"
+                  IsExpanded="True"
+                  VerticalAlignment="Center">
+            <Expander.Header>
+                <TextBlock Text="Справка по оценкам" 
+                               FontWeight="Bold"
+                               RenderTransformOrigin=".5,.5">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="270" />
+                    </TextBlock.LayoutTransform>
+                </TextBlock>
+            </Expander.Header>
+            <StackPanel Margin="20">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Star" Foreground="#ffeb3b"/>
+                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - вовсе не значимо</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - довольно незначимый</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - относительно значимый</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - весьма значимый</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
+                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - очень значимый</TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </Expander>
+
+    </Grid>
+</UserControl>

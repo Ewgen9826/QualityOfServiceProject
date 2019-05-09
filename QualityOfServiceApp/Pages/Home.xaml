@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="QualityOfServiceApp.Pages.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             MinHeight="500" MinWidth="700">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" 
+                Height="180" Width="180">
+            <Border CornerRadius="20">
+            <StackPanel>
+            <materialDesign:PackIcon Kind="ContentPaste"
+                                     Foreground="#fff"
+                                     HorizontalAlignment="Center"
+                                     Height="50" Width="50"
+                                     Margin="0 0 0 20"/>
+            <TextBlock Text="Пройти анкетирование"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       Foreground="#fff"
+                       FontSize="18"/>
+            </StackPanel>
+            </Border>
+        </Button>
+        <Button Grid.Column="1" 
+                Height="180" 
+                Width="180"
+                Margin="100 0 0 0">
+            <Border CornerRadius="20">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="ClipboardUser"
+                                     Foreground="#fff"
+                                     HorizontalAlignment="Center"
+                                     Height="50" Width="50"
+                                     Margin="0 0 0 20"/>
+                    <TextBlock Text="Войти в систему"
+                       Foreground="#fff"
+                       FontSize="18"/>
+                </StackPanel>
+            </Border>
+        </Button>
+    </Grid>
+</UserControl>
