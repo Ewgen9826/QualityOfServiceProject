@@ -34,7 +34,7 @@
                        Style="{StaticResource MaterialDesignTitleTextBlock}"
                        VerticalAlignment="Center" Margin="20 0"/>
             <TextBox FontSize="18" Width="250"
-                     materialDesign:HintAssist.Hint="Введите район" />
+                     materialDesign:HintAssist.Hint="Введите район" TextChanged="TextBox_TextChanged" />
         </StackPanel>
         <!--Населенный пункт-->
         <StackPanel Orientation="Horizontal"

@@ -16,18 +16,13 @@ using System.Windows.Shapes;
 namespace QualityOfServiceApp.Pages
 {
     /// <summary>
-    /// Interaction logic for Subdivision.xaml
+    /// Interaction logic for Service.xaml
     /// </summary>
-    public partial class Subdivision : UserControl
+    public partial class Service : UserControl
     {
-        public Subdivision()
+        public Service()
         {
             InitializeComponent();
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

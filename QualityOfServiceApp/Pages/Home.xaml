@@ -6,20 +6,22 @@
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             MinHeight="500" MinWidth="700">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+             Height="Auto" Width="Auto">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Grid.Column="0" 
-                Height="180" Width="180">
+        <Button Grid.Column="0"
+                Width="Auto" Height="Auto"
+                Margin="120" Padding="30"
+                Command="{Binding GoToQuestionnaireCommand}">
             <Border CornerRadius="20">
             <StackPanel>
             <materialDesign:PackIcon Kind="ContentPaste"
                                      Foreground="#fff"
                                      HorizontalAlignment="Center"
-                                     Height="50" Width="50"
+                                     Height="60" Width="60"
                                      Margin="0 0 0 20"/>
             <TextBlock Text="Пройти анкетирование"
                        TextWrapping="Wrap"
@@ -30,15 +32,16 @@
             </Border>
         </Button>
         <Button Grid.Column="1" 
-                Height="180" 
-                Width="180"
-                Margin="100 0 0 0">
+                Height="Auto" 
+                Width="Auto"
+                Margin="120" Padding="30"
+                Command="{Binding GoToLoginCommand}">
             <Border CornerRadius="20">
                 <StackPanel>
                     <materialDesign:PackIcon Kind="ClipboardUser"
                                      Foreground="#fff"
                                      HorizontalAlignment="Center"
-                                     Height="50" Width="50"
+                                     Height="60" Width="60"
                                      Margin="0 0 0 20"/>
                     <TextBlock Text="Войти в систему"
                        Foreground="#fff"

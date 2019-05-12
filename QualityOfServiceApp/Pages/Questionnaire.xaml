@@ -17,15 +17,6 @@
         </Grid.RowDefinitions>
         <!--Header Section-->
         <Grid>
-            <Button HorizontalAlignment="Left"
-                    Style="{StaticResource MaterialDesignFlatButton}">
-            <materialDesign:PackIcon Kind="ArrowLeft"
-                                     VerticalAlignment="Center"
-                                     Margin="20 0"
-                                     Height="25" Width="25"
-                                     Foreground="#FF88BB88"
-                                     />
-            </Button>
             <TextBlock Text="Анкета"
                        HorizontalAlignment="Center"
                        Style="{StaticResource MaterialDesignHeadlineTextBlock}"/>
@@ -85,7 +76,7 @@
                     <local:Ratings/>
                 </model:Step.Content>
             </model:Step>
-            
+
             <controls:Stepper.Resources>
                 <ResourceDictionary>
                     <ResourceDictionary.MergedDictionaries>
@@ -94,12 +85,13 @@
                 </ResourceDictionary>
             </controls:Stepper.Resources>
         </controls:Stepper>
-
+        
         <!--Button Section-->
         <StackPanel Orientation="Horizontal" 
                     HorizontalAlignment="Right"
                     Grid.Row="2">
-            <Button Style="{StaticResource MaterialDesignFlatButton}"
+            <Button 
+                    Style="{StaticResource MaterialDesignFlatButton}"
                     Foreground="#FF88BB88"
                     Margin="0 20 0 20">
                 <StackPanel Orientation="Horizontal">

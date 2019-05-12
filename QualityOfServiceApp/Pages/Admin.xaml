@@ -4,9 +4,83 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+              Width="Auto" Height="Auto">
     <Grid>
+        <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             
+            <Button Width="Auto" Height="Auto"
+                    Margin="40" Padding="20"
+                Command="{Binding GoToBanksPageCommand}">
+                <Border CornerRadius="20">
+                    <StackPanel>
+                    <materialDesign:PackIcon Kind="SecurityHome"
+                                     Foreground="#fff"
+                                     HorizontalAlignment="Center"
+                                     Height="60" Width="60"
+                                     Margin="0 0 0 20"/>
+                        <TextBlock Text="Управление банками"
+                       Foreground="#fff"
+                       FontSize="18"/>
+                    </StackPanel>
+                </Border>
+            </Button>
+            <Button Width="Auto" Height="Auto"
+                    Grid.Row="1" Margin="40" Padding="20"
+                Command="{Binding GoToBankResultPageCommand}">
+                <Border CornerRadius="20">
+                    <StackPanel>
+                    <materialDesign:PackIcon Kind="ChartBarStacked"
+                                     Foreground="#fff"
+                                     HorizontalAlignment="Center"
+                                     Height="60" Width="60"
+                                     Margin="0 0 0 20"/>
+                        <TextBlock Text="Результаты по банкам"
+                       Foreground="#fff"
+                       FontSize="18"/>
+                    </StackPanel>
+                </Border>
+            </Button>
+            <Button Width="Auto" Height="Auto"
+                    Grid.Column="1" Margin="40" Padding="20"
+                Command="{Binding GoToServicePageCommand}">
+                <Border CornerRadius="20">
+                    <StackPanel>
+                    <materialDesign:PackIcon Kind="FormatListBulleted"
+                                     Foreground="#fff"
+                                     HorizontalAlignment="Center"
+                                     Height="60" Width="60"
+                                     Margin="0 0 0 20"/>
+                        <TextBlock Text="Управление услугами"
+                       Foreground="#fff"
+                       FontSize="18"/>
+                    </StackPanel>
+                </Border>
+            </Button>
+            <Button Width="Auto" Height="Auto"
+                    Grid.Column="1" Grid.Row="1"
+                    Margin="40" Padding="20"
+                Command="{Binding GoToOverallResultPageCommand}">
+                <Border CornerRadius="20">
+                    <StackPanel>
+                    <materialDesign:PackIcon Kind="ChartBar"
+                                     Foreground="#fff"
+                                     HorizontalAlignment="Center"
+                                     Height="60" Width="60"
+                                     Margin="0 0 0 20"/>
+                        <TextBlock Text="Общие результаты"
+                       Foreground="#fff"
+                       FontSize="18"/>
+                    </StackPanel>
+                </Border>
+            </Button>
     </Grid>
 </UserControl>
