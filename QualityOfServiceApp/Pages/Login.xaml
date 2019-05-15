@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Height="450" Width="320">
+             mc:Ignorable="d" Height="450" Width="400">
     <materialDesign:ColorZone materialDesign:ShadowAssist.ShadowDepth="Depth4" Background="#eeeeee" Mode="Light" Padding="30">
         <Grid>
             <Grid.RowDefinitions>
@@ -23,15 +23,21 @@
             <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 20">
                 <materialDesign:PackIcon Kind="Account" Height="40" Width="40" Margin="0 0 10 0" 
                                          Foreground="{Binding ElementName=LoginText, Path=BorderBrush}"/>
-                <TextBox x:Name="LoginText" Grid.Row="2" HorizontalAlignment="Stretch" Width="200" BorderBrush="#000" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"
-                         materialDesign:HintAssist.Hint="Логин" materialDesign:HintAssist.IsFloating="True" FontSize="20"/>
+                <TextBox x:Name="LoginText" Grid.Row="2" 
+                         HorizontalAlignment="Stretch" Width="200" 
+                         BorderBrush="#000"
+                         materialDesign:HintAssist.Hint="Логин"
+                         materialDesign:HintAssist.IsFloating="True" 
+                         FontSize="20" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0 20">
                 <materialDesign:PackIcon Kind="AccountKey" Height="40" Width="40" Margin="0 0 10 0"
                                          Foreground="{Binding ElementName=PasswordText, Path=BorderBrush}" VerticalAlignment="Center"/>
-                <PasswordBox x:Name="PasswordText" Grid.Row="2" materialDesign:HintAssist.Hint="Пароль" BorderBrush="#000" materialDesign:HintAssist.IsFloating="True"
-                         FontSize="20" Width="200" />
+                <TextBox x:Name="PasswordText" 
+                            Grid.Row="2" materialDesign:HintAssist.Hint="Пароль" 
+                             BorderBrush="#000" materialDesign:HintAssist.IsFloating="True"
+                         FontSize="20" Width="200" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <Button Grid.Row="4" Margin="0,10,0,0" Height="Auto" Padding="8" Command="{Binding GoToAdminPageCommand}">
                 <TextBlock Style="{StaticResource MaterialDesignButtonTextBlock}" Foreground="#fff" FontWeight="Bold" FontSize="20" Text="Войти"/>

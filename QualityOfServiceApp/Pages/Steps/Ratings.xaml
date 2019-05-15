@@ -3,30 +3,39 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
+             xmlns:local="clr-namespace:QualityOfServiceApp.Pages"             
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+             Width="Auto" Height="Auto"
              mc:Ignorable="d">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <ScrollViewer>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <!--Материальность-->
-                <Expander Header="Материальность" 
-                          Background="#ffe4e4e4">
+                <Expander Background="#ffe4e4e4" IsExpanded="True">
+                    <Expander.Header>
+                        <TextBlock Text="Материальность"
+                                   Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                                   HorizontalAlignment="Center"/>
+                    </Expander.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Center" 
+                                    Margin="20 10"
+                                    DataContext="{Binding CriteriaEvaluations[0]}">
                             <TextBlock VerticalAlignment="Center" 
-                                       FontSize="16"
+                                       FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Банк имеет современные оргтехнику и оборудование
@@ -38,23 +47,26 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Center" 
+                                    Margin="20 10"
+                                    DataContext="{Binding CriteriaEvaluations[1]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Помещения банка в отличном состоянии
                             </TextBlock>
@@ -65,22 +77,25 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Center" 
+                                    Margin="20 10"
+                                    DataContext="{Binding CriteriaEvaluations[2]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Работника банка имеют приятную наружность и опрятны
                             </TextBlock>
@@ -91,22 +106,25 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        <StackPanel Orientation="Vertical" 
+                                    HorizontalAlignment="Center" 
+                                    Margin="20 10"
+                                    DataContext="{Binding CriteriaEvaluations[3]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Внешний вид информационных материалов банка (буклетов, проспектов) привлекателен
                             </TextBlock>
@@ -117,16 +135,16 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -134,13 +152,18 @@
                 </Expander>
                 
                 <!--Надежность-->
-                <Expander Header="Надежность" 
-                  Background="#ffe4e4e4"
+                <Expander Background="#ffe4e4e4"
                   Grid.Row="1">
+                    <Expander.Header>
+                        <TextBlock Text="Надежность"
+                                   Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                                   HorizontalAlignment="Center"/>
+                    </Expander.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[4]}">
                             <TextBlock VerticalAlignment="Center" 
-                                       FontSize="16"
+                                       FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Банк  выполняет свои обещания оказать услугу к назначенному времени
@@ -152,23 +175,26 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[5]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Если у клиентов случаются проблемы, то банк искренне пытается их решить
                             </TextBlock>
@@ -179,22 +205,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[6]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 У банка надёжная репутация
                             </TextBlock>
@@ -205,22 +233,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[7]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Банк предоставляет услуги аккуратно и в срок
                             </TextBlock>
@@ -231,22 +261,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[8]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Банк избегает ошибок и неточностей в своих операциях
                             </TextBlock>
@@ -257,30 +289,38 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
+                        
+                        
                     </StackPanel>
                 </Expander>
                 
                 <!--Отзыачивость-->
-                <Expander Header="Отзывчивость" 
-                  Grid.Row="2"
+                <Expander Grid.Row="2"
                   Background="#ffe4e4e4">
+                    <Expander.Header>
+                        <TextBlock Text="Отзывчивость"
+                                   Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                                   HorizontalAlignment="Center"/>
+                    </Expander.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[9]}">
                             <TextBlock VerticalAlignment="Center" 
-                                       FontSize="16"
+                                       FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                Сотрудники банка дисциплинированны
@@ -292,23 +332,25 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[10]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                Сотрудники банка оказывают услуги быстро и оперативно
                             </TextBlock>
@@ -319,22 +361,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[11]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Сотрудники банка всегда помогают клиентам решить их проблемы
                             </TextBlock>
@@ -345,22 +389,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[12]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Сотрудники банка быстро реагируют на просьбы клиентов
                             </TextBlock>
@@ -371,30 +417,38 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
+                        
+                        
                     </StackPanel>
                 </Expander>
                 
                 <!--Убежденность-->
-                <Expander Header="Убежденность"
-                  Background="#ffe4e4e4"
+                <Expander Background="#ffe4e4e4"
                   Grid.Row="3">
+                    <Expander.Header>
+                        <TextBlock Text="Убежденность"
+                                   Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                                   HorizontalAlignment="Center"/>
+                    </Expander.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding CriteriaEvaluations[13]}">
                             <TextBlock VerticalAlignment="Center" 
-                                       FontSize="16"
+                                       FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                Между клиентами и сотрудниками банка существует атмосфера доверия и взаимопонимания
@@ -406,23 +460,25 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding CriteriaEvaluations[14]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                В отношениях с банком клиенты чувствовуют себя безопасно
                             </TextBlock>
@@ -433,22 +489,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding CriteriaEvaluations[15]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Сотрудники банка вежливы с клиентами
                             </TextBlock>
@@ -459,22 +517,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+                        
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding CriteriaEvaluations[16]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Руководство банка оказывает всяческую поддержку сотрудникам для эффективного обслуживания клиентов
                             </TextBlock>
@@ -485,30 +545,38 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
+                        
+                        
                     </StackPanel>
                 </Expander>
                 
                 <!--Сочувствие-->
-                <Expander Header="Сочувствие" 
-                  Background="#ffe4e4e4"
+                <Expander Background="#ffe4e4e4"
                   Grid.Row="4">
+                    <Expander.Header>
+                        <TextBlock Text="Сочувствие"
+                                   Style="{StaticResource MaterialDesignHeadlineTextBlock}"
+                                   HorizontalAlignment="Center"/>
+                    </Expander.Header>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[17]}">
                             <TextBlock VerticalAlignment="Center" 
-                                       FontSize="16"
+                                       FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 К клиентам в банке применяется индивидуальный подход
@@ -520,23 +588,25 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[18]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Сотрудники банка принимают личное участие в решении проблем клиентов
                             </TextBlock>
@@ -547,22 +617,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[19]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Сотрудники банка знают потребности своих клиентов
                             </TextBlock>
@@ -573,22 +645,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[20]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                 Сотрудники банка ориентируются на проблемы клиентов
                             </TextBlock>
@@ -599,22 +673,24 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[21]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
-                       FontSize="16"
+                       FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
                Время работы банка удобно для всех клиентов
                             </TextBlock>
@@ -625,70 +701,89 @@
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Ожидание</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Expectation, Mode=TwoWay}"/>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal"
                             Grid.Column="1" Margin="20 10">
                                     <TextBlock VerticalAlignment="Center"
-                               FontSize="12"
+                               FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
-                                    <materialDesign:RatingBar Foreground="#ffc107" Value="3"/>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
+
+
                     </StackPanel>
                 </Expander>
             </Grid>
         </ScrollViewer>
-        <Expander ExpandDirection="Left"
+        <Expander ExpandDirection="Left" Grid.RowSpan="2"
                   Background="#FF88BB88"
-                  Grid.Column="1"
-                  IsExpanded="True"
+                  HorizontalAlignment="Right"
+                  IsExpanded="False"
                   VerticalAlignment="Center">
             <Expander.Header>
                 <TextBlock Text="Справка по оценкам" 
                                FontWeight="Bold"
+                               FontSize="18"
                                RenderTransformOrigin=".5,.5">
                     <TextBlock.LayoutTransform>
                         <RotateTransform Angle="270" />
                     </TextBlock.LayoutTransform>
                 </TextBlock>
             </Expander.Header>
-            <StackPanel Margin="20">
+            <StackPanel Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Star" Foreground="#ffeb3b"/>
-                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - вовсе не значимо</TextBlock>
+                    <materialDesign:PackIcon Kind="Star" Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b"/>
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"> - вовсе не значимо</TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - довольно незначимый</TextBlock>
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"> - довольно незначимый</TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - относительно значимый</TextBlock>
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"> - относительно значимый</TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - весьма значимый</TextBlock>
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"> - весьма значимый</TextBlock>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <materialDesign:PackIcon Foreground="#ffeb3b" Kind="Star" />
-                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}"> - очень значимый</TextBlock>
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <materialDesign:PackIcon  Height="25" Width="25" VerticalAlignment="Center" Foreground="#ffeb3b" Kind="Star" />
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}"> - очень значимый</TextBlock>
                 </StackPanel>
             </StackPanel>
         </Expander>
-
+        <controls:StepButtonBar Grid.Row="1"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center"
+                                Margin="0 10">
+            <controls:StepButtonBar.Back>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" Margin="20 0"/>
+                    <TextBlock Text="Назад"/>
+                </StackPanel>
+            </controls:StepButtonBar.Back>
+            <controls:StepButtonBar.Continue>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Закончить"/>
+                    <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" Margin="20 0"/>
+                </StackPanel>
+            </controls:StepButtonBar.Continue>
+        </controls:StepButtonBar>
     </Grid>
 </UserControl>

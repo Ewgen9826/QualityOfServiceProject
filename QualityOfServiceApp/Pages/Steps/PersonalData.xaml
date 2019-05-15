@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+             mc:Ignorable="d" Height="Auto" Width="auto">
     <Grid HorizontalAlignment="Center"
           VerticalAlignment="Center"
            >
@@ -15,17 +15,19 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <!--Пол-->
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center">
-            <TextBlock Text="Пол:" FontSize="18"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       VerticalAlignment="Center" Margin="20 0"/>
-            <ComboBox materialDesign:HintAssist.Hint="Выберите пол" 
+            <TextBlock Text="Пол:" FontSize="24"
+                       Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                       VerticalAlignment="Center" Margin="40 0"/>
+            <ComboBox materialDesign:HintAssist.Hint="Выберите пол"
+                      SelectedItem="{Binding Gender}"
                       IsEditable="True"
                       materialDesign:HintAssist.HintOpacity=".26"
-                      Width="200" FontSize="18">
+                      Width="Auto" FontSize="24">
                 <ComboBoxItem>
                     Мужской
                 </ComboBoxItem>
@@ -38,15 +40,16 @@
         <!--Возраст-->
         <StackPanel Orientation="Horizontal"
                     Grid.Row="1"
-                    Margin="0 40"
+                    Margin="0 30"
                     HorizontalAlignment="Center">
-            <TextBlock Text="Возраст:" FontSize="18"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       VerticalAlignment="Center" Margin="20 0"/>
+            <TextBlock Text="Возраст:" FontSize="24"
+                       Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                       VerticalAlignment="Center" Margin="40 0"/>
             <ComboBox materialDesign:HintAssist.Hint="Выберите возраст" 
                       IsEditable="True"
+                      SelectedItem="{Binding Age}"
                       materialDesign:HintAssist.HintOpacity=".26"
-                      Width="200" FontSize="18">
+                      Width="Auto" FontSize="24">
                 <ComboBoxItem>
                     До 31
                 </ComboBoxItem>
@@ -68,13 +71,14 @@
         <StackPanel Orientation="Horizontal"
                     Grid.Row="2"
                     HorizontalAlignment="Center">
-            <TextBlock Text="Образование:" FontSize="18"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       VerticalAlignment="Center" Margin="20 0"/>
+            <TextBlock Text="Образование:" FontSize="24"
+                       Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                       VerticalAlignment="Center" Margin="40 0"/>
             <ComboBox materialDesign:HintAssist.Hint="Выберите образование" 
                       IsEditable="True"
+                      SelectedItem="{Binding Education}"
                       materialDesign:HintAssist.HintOpacity=".26"
-                      Width="200" FontSize="18">
+                      Width="Auto" FontSize="24">
                 <ComboBoxItem>
                     Среднее
                 </ComboBoxItem>
@@ -94,15 +98,16 @@
         <!--Социальная группа-->
         <StackPanel Orientation="Horizontal"
                     Grid.Row="3"
-                    Margin="0 40"
+                    Margin="0 30"
                     HorizontalAlignment="Center">
-            <TextBlock Text="Социальная группа:" FontSize="18"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       VerticalAlignment="Center" Margin="20 0"/>
+            <TextBlock Text="Социальная группа:" FontSize="24"
+                       Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                       VerticalAlignment="Center" Margin="40 0"/>
             <ComboBox materialDesign:HintAssist.Hint="Выберите социальную группу" 
                       IsEditable="True"
+                      SelectedItem="{Binding SocialGroup}"
                       materialDesign:HintAssist.HintOpacity=".26"
-                      Width="200" FontSize="18">
+                      Width="Auto" FontSize="24">
                 <ComboBoxItem>
                     Рабочий
                 </ComboBoxItem>
@@ -131,6 +136,22 @@
                     Руководитель
                 </ComboBoxItem>
             </ComboBox>        </StackPanel>
-
+        <controls:StepButtonBar Grid.Row="4" 
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center"
+                                Margin="10">
+            <controls:StepButtonBar.Back>
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" Margin="20 0"/>
+                    <TextBlock Text="Назад"/>
+                </StackPanel>
+            </controls:StepButtonBar.Back>
+            <controls:StepButtonBar.Continue>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Далее"/>
+                    <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" Margin="20 0"/>
+                </StackPanel>
+            </controls:StepButtonBar.Continue>
+        </controls:StepButtonBar>
     </Grid>
 </UserControl>

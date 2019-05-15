@@ -44,6 +44,7 @@ namespace QualityOfServiceApp.ViewModels
         }));
 
         #endregion
+
         private WindowState windowState;
         public WindowState WindowState
         {
@@ -60,6 +61,17 @@ namespace QualityOfServiceApp.ViewModels
         public Visibility IsMinWindow => WindowState == WindowState.Maximized ? Visibility.Collapsed : Visibility.Visible;
         private IPageViewModel currentPageViewModel;
         private List<IPageViewModel> pageViewModels;
+
+        private string header;
+        public string Header
+        {
+            get => header;
+            set
+            {
+                header = value;
+                OnPropertyChanged("Header");
+            }
+        }
 
         public List<IPageViewModel> PageViewModels
         {
@@ -96,37 +108,45 @@ namespace QualityOfServiceApp.ViewModels
 
         private void GoToHomePage(object obj)
         {
+            Header = "Главная";
             ChangeViewModel(PageViewModels[0]);
         }
 
         private void GoToQuestionnairePage(object obj)
         {
+            Header = "Прохождение анкеты";
             ChangeViewModel(PageViewModels[1]);
         }
 
         private void GoToLoginPage(object obj)
         {
+            Header = "Страница входа в систему";
             ChangeViewModel(PageViewModels[2]);
         }
         private void GoToAdminPage(object obj)
         {
+            Header = "Административная панелль";
             ChangeViewModel(PageViewModels[3]);
         }
         private void GoToBanksPage(object obj)
         {
+            Header = "Управление банками";
             ChangeViewModel(PageViewModels[4]);
         }
         private void GoToServicePage(object obj)
         {
+            Header = "Управление услугами банков";
             ChangeViewModel(PageViewModels[5]);
         }
         private void GoToBankResultPage(object obj)
         {
+            Header = "Результаты по отдельным банкам";
             ChangeViewModel(PageViewModels[6]);
         }
 
         private void GoToOverallResultPage(object obj)
         {
+            Header = "Общие результаты";
             ChangeViewModel(PageViewModels[7]);
         }
         public MainWindowViewModel()
@@ -142,6 +162,7 @@ namespace QualityOfServiceApp.ViewModels
             PageViewModels.Add(new OverallResultViewModel());
 
             CurrentPageViewModel = PageViewModels[0];
+            Header = "Главная";
 
             Mediator.Subscribe("GoToHomePage", GoToHomePage);
             Mediator.Subscribe("GoToLoginPage", GoToLoginPage);

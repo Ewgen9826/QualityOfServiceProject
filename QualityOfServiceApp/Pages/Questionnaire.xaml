@@ -7,28 +7,16 @@
              xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              xmlns:model="clr-namespace:MaterialDesignExtensions.Model;assembly=MaterialDesignExtensions"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             MinHeight="500" MinWidth="700">
+             mc:Ignorable="d" Height="700" Width="Auto"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <!--Header Section-->
-        <Grid>
-            <TextBlock Text="Анкета"
-                       HorizontalAlignment="Center"
-                       Style="{StaticResource MaterialDesignHeadlineTextBlock}"/>
-        </Grid>
-
         <!--Stepper Section-->
-        <controls:Stepper IsLinear="False" 
+        <controls:Stepper IsLinear="True" 
                           Layout="Horizontal"
-                          Margin="10"
-                          Grid.Row="1"
+                          Padding="10"
+                          Grid.Row="0"
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            
+
             <model:Step>
                 <model:Step.Header>
                     <TextBlock Foreground="#000"
@@ -40,7 +28,7 @@
                     <local:Subdivision/>
                 </model:Step.Content>
             </model:Step>
-            
+
             <model:Step>
                 <model:Step.Header>
                     <TextBlock Foreground="#000"
@@ -52,19 +40,7 @@
                     <local:PersonalData/>
                 </model:Step.Content>
             </model:Step>
-            
-            <model:Step>
-                <model:Step.Header>
-                    <TextBlock Foreground="#000"
-                               Text="Выбор услуги"
-                               FontSize="16"
-                               Style="{StaticResource MaterialDesignTitleTextBlock}"/>
-                </model:Step.Header>
-                <model:Step.Content>
-                    <local:ServiceChoice/>
-                </model:Step.Content>
-            </model:Step>
-            
+
             <model:Step>
                 <model:Step.Header>
                     <TextBlock Foreground="#000"
@@ -85,33 +61,5 @@
                 </ResourceDictionary>
             </controls:Stepper.Resources>
         </controls:Stepper>
-        
-        <!--Button Section-->
-        <StackPanel Orientation="Horizontal" 
-                    HorizontalAlignment="Right"
-                    Grid.Row="2">
-            <Button 
-                    Style="{StaticResource MaterialDesignFlatButton}"
-                    Foreground="#FF88BB88"
-                    Margin="0 20 0 20">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ArrowLeft" 
-                                             VerticalAlignment="Center"
-                                             Height="25" Width="25"/>
-                    <TextBlock Text="Назад" Margin="10 0" 
-                               FontSize="18"/>
-                </StackPanel>
-            </Button>
-            <Button Foreground="#fff" Margin="0 0 20 0">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Далее" Margin="10 0" 
-                               VerticalAlignment="Center"
-                               FontSize="18"/>
-                    <materialDesign:PackIcon Kind="ArrowRight" 
-                                             VerticalAlignment="Center"
-                                             Height="25" Width="25"/>
-                </StackPanel>
-            </Button>
-        </StackPanel>
     </Grid>
 </UserControl>

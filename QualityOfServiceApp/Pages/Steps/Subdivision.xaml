@@ -5,58 +5,71 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid HorizontalAlignment="Center"
-          VerticalAlignment="Center"
+             xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
+             mc:Ignorable="d" Width="Auto" Height="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch"
            >
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <!--Область-->
-        <StackPanel Orientation="Horizontal"
-                    HorizontalAlignment="Center">
-            <TextBlock Text="Область:" FontSize="18"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       VerticalAlignment="Center" Margin="20 0"/>
-            <TextBox FontSize="18" Width="250"
-                     materialDesign:HintAssist.Hint="Введите область" />
-        </StackPanel>
-        <!--Район-->
-        <StackPanel Orientation="Horizontal"
-                    Grid.Row="1"
-                    Margin="0 40"
-                    HorizontalAlignment="Center">
-            <TextBlock Text="Район:" FontSize="18"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       VerticalAlignment="Center" Margin="20 0"/>
-            <TextBox FontSize="18" Width="250"
-                     materialDesign:HintAssist.Hint="Введите район" TextChanged="TextBox_TextChanged" />
-        </StackPanel>
-        <!--Населенный пункт-->
-        <StackPanel Orientation="Horizontal"
-                    Grid.Row="2"
-                    HorizontalAlignment="Center">
-            <TextBlock Text="Населенный пункт:" FontSize="18"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       VerticalAlignment="Center" Margin="20 0"/>
-            <TextBox x:Name="CommentTextBox" FontSize="18" Width="250"
-                     materialDesign:HintAssist.Hint="Введите населенный пункт" />
-        </StackPanel>
-        <!--Подразделение банка-->
-        <StackPanel Orientation="Horizontal"
-                    Grid.Row="3"
-                    Margin="0 40"
-                    HorizontalAlignment="Center">
-            <TextBlock Text="Подразделение банка:" FontSize="18"
-                       Style="{StaticResource MaterialDesignTitleTextBlock}"
-                       VerticalAlignment="Center" Margin="20 0"/>
-            <TextBox FontSize="18" Width="250"
-                     materialDesign:HintAssist.Hint="Введите подразделение банка" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
+                    Margin="0 60">
+            <TextBlock Text="Выберите подразделение банка:"
+                       FontSize="32"
+                       Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                       VerticalAlignment="Center"/>
+            <ComboBox SelectedItem="{Binding SelectBank}"
+                      materialDesign:HintAssist.Hint="Выберите банк"
+                      MinWidth="200"
+                      Margin="30 0 0 0"
+                      Foreground="#000"
+                       FontSize="24"
+                VerticalAlignment="Center"
+                      ItemsSource="{Binding Banks}"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">      
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    Grid.Row="1">
+            <TextBlock Text="Выберите услугу банка:"
+                       FontSize="32"
+                       Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                       VerticalAlignment="Center"/>
+            <ComboBox materialDesign:HintAssist.Hint="Выберите услугу банка"
+                      MinWidth="200"
+                      Margin="30 0 0 0"
+                      Foreground="#000"
+                      FontSize="24"
+                      SelectedItem="{Binding SelectService}"
+                VerticalAlignment="Center"
+                      ItemsSource="{Binding Services}"
+                      Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <controls:StepButtonBar Grid.Row="2"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center"
+                                Margin="30">
+            <controls:StepButtonBar.Continue>
+                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Далее"/>
+                    <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" Margin="20 0"/>
+                </StackPanel>
+            </controls:StepButtonBar.Continue>
+        </controls:StepButtonBar>
     </Grid>
 </UserControl>

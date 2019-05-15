@@ -108,17 +108,22 @@
         <Grid x:Name="content"
               Grid.Row="1"
               MinHeight="500" MinWidth="700">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="143*"/>
+                <ColumnDefinition Width="625*"/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Background="#FFE4E4E4">
+            <Grid Background="#FFE4E4E4" Grid.ColumnSpan="2">
                 <Grid.Effect>
                     <DropShadowEffect materialDesign:ShadowAssist.ShadowEdges="Bottom" BlurRadius="15" ShadowDepth="1"/>
                 </Grid.Effect>
                 <TextBlock VerticalAlignment="Center" 
                            HorizontalAlignment="Center"
-                           Style="{StaticResource MaterialDesignDisplay1TextBlock}" FontSize="28">Главная</TextBlock>
+                           Style="{StaticResource MaterialDesignDisplay1TextBlock}" FontSize="28"
+                           Text="{Binding Header}"/>
                 <Button HorizontalAlignment="Right" VerticalAlignment="Top" Height="Auto" Width="Auto" Padding="10"
                     Command="{Binding GoToHomePageCommand}"
                     Style="{StaticResource MaterialDesignFlatButton}">
@@ -134,7 +139,7 @@
                 </Button>
 
             </Grid>
-            <ContentControl Grid.Row="1" Content="{Binding CurrentPageViewModel}"/>
+            <ContentControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="1" Content="{Binding CurrentPageViewModel}" Grid.ColumnSpan="2"/>
         </Grid>
     </Grid>
 </Window>

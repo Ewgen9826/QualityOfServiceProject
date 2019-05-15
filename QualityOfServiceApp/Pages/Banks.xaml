@@ -11,6 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
@@ -20,64 +21,27 @@
             <ListBox Foreground="#000" 
                  Background="#fff"
                  Margin="20 10"
-                 BorderThickness="5"
-                 BorderBrush="#FF88BB88"
-                 MinWidth="400">
-                <ListBox.Items>
-
-                    <ListBoxItem Padding="20 10">
-                        <StackPanel Orientation="Horizontal">
+                 MinWidth="300"
+                 Width="Auto"
+                 ItemsSource="{Binding Banks}"
+                 SelectedItem="{Binding SeleckBank}">
+                <ListBox.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="20"/>
+                </ListBox.Effect>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="20 10" Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Bank"  
                                              VerticalAlignment="Center"
                                              Height="30" Width="30"
                                              Foreground="{StaticResource PrimaryHueDarkBrush}"
                                              Margin="0 0 20 0"/>
-                            <TextBlock Text="Беларусбанк"
+                            <TextBlock Text="{Binding Path=Name}"
                                Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                                FontSize="24"/>
                         </StackPanel>
-                    </ListBoxItem>
-
-                    <ListBoxItem Padding="20 10">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Bank"  
-                                             VerticalAlignment="Center"
-                                             Height="30" Width="30"
-                                             Foreground="{StaticResource PrimaryHueDarkBrush}"
-                                             Margin="0 0 20 0"/>
-                            <TextBlock Text="Беларусбанк"
-                               Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                               FontSize="24"/>
-                        </StackPanel>
-                    </ListBoxItem>
-
-                    <ListBoxItem Padding="20 10">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Bank"  
-                                             VerticalAlignment="Center"
-                                             Height="30" Width="30"
-                                             Foreground="{StaticResource PrimaryHueDarkBrush}"
-                                             Margin="0 0 20 0"/>
-                            <TextBlock Text="Беларусбанк"
-                               Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                               FontSize="24"/>
-                        </StackPanel>
-                    </ListBoxItem>
-
-                    <ListBoxItem Padding="20 10">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Bank"  
-                                             VerticalAlignment="Center"
-                                             Height="30" Width="30"
-                                             Foreground="{StaticResource PrimaryHueDarkBrush}"
-                                             Margin="0 0 20 0"/>
-                            <TextBlock Text="Беларусбанк"
-                               Style="{StaticResource MaterialDesignDisplay1TextBlock}"
-                               FontSize="24"/>
-                        </StackPanel>
-                    </ListBoxItem>
-
-                </ListBox.Items>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
             </ListBox>
             <Grid Grid.Row="1">
                 <Button  Padding="20 10" Width="auto" Height="auto"
@@ -99,14 +63,14 @@
                         HorizontalAlignment="Right"
                         Margin="20 10">
                 <Button Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-                        ToolTip="Удалить"
+                        ToolTip="Удалить" Command="{Binding RemoveBankCommand}"
                         Background="#e53935" BorderBrush="#e53935">
                     <materialDesign:PackIcon Kind="Delete" 
                                              Height="24" Width="24" />
                 </Button>
-                <Button Margin="10 0"
+                <Button Margin="10 0" Command="{Binding UpdateListCommand}"
                     Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-                        ToolTip="Изменить"
+                        ToolTip="Обновить"
                         Background="#00838f" BorderBrush="#00838f">
                     <materialDesign:PackIcon Kind="Update" 
                                              Height="24" Width="24" />
@@ -128,7 +92,8 @@
                                HorizontalAlignment="Center"/>
                     <TextBox materialDesign:HintAssist.Hint="Введите подразделение банка"
                              HorizontalAlignment="Stretch"
-                             FontSize="18"/>
+                             FontSize="18"
+                             Text="{Binding Name, Mode=TwoWay}"/>
 
                 </StackPanel>
                 <StackPanel Orientation="Vertical"
@@ -138,7 +103,8 @@
                                HorizontalAlignment="Center"/>
                     <TextBox materialDesign:HintAssist.Hint="Введите область"
                              HorizontalAlignment="Stretch"
-                             FontSize="18"/>
+                             FontSize="18"
+                             Text="{Binding Region, Mode=TwoWay}"/>
 
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
@@ -147,7 +113,8 @@
                                HorizontalAlignment="Center"/>
                     <TextBox materialDesign:HintAssist.Hint="Введите район"
                              HorizontalAlignment="Stretch"
-                             FontSize="18"/>
+                             FontSize="18"
+                              Text="{Binding Neighborhood, Mode=TwoWay}"/>
 
                 </StackPanel>
                 <StackPanel Orientation="Vertical"
@@ -157,17 +124,65 @@
                                HorizontalAlignment="Center"/>
                     <TextBox materialDesign:HintAssist.Hint="Введите населенный пункт"
                              HorizontalAlignment="Stretch"
-                             FontSize="18"/>
+                             FontSize="18"
+                              Text="{Binding Locality, Mode=TwoWay}"/>
 
                 </StackPanel>
-                <Button HorizontalAlignment="Center" Height="Auto" Padding="70 10">
+                <Button HorizontalAlignment="Center" Height="Auto" Padding="70 10"
+                        Command="{Binding AddBankCommand}">
                     <TextBlock Style="{StaticResource MaterialDesignButtonTextBlock}"
                                Foreground="#fff"
                                FontSize="18"
-                               HorizontalAlignment="Center">Добавить</TextBlock>
+                               HorizontalAlignment="Center">Добавить</TextBlock
+                               >
                 </Button>
             </StackPanel>
-            
+
         </materialDesign:Card>
+        <StackPanel Grid.Column="2" Orientation="Vertical" Margin="0 10" VerticalAlignment="Stretch">
+            <TextBlock Text="Выберите услуги банка"
+                       HorizontalAlignment="Center"
+                       Style="{StaticResource MaterialDesignHeadlineTextBlock}"/>
+            <ListBox 
+                 Foreground="#000" 
+                 Background="#fff"
+                 Margin="20 10"
+                 MinWidth="300"
+                 Width="Auto"
+                 ItemsSource="{Binding Services}">
+                <ListBox.Effect>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="20"/>
+                </ListBox.Effect>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border x:Name="Border" Padding="20 10"
+                            CornerRadius="10"
+                            MinWidth="300">
+                            <CheckBox IsChecked="{Binding IsSelect}" 
+                                  Background="#000" 
+                                  Foreground="#000" 
+                                  BorderBrush="#000">
+                                <StackPanel Orientation="Horizontal">
+
+                                    <TextBlock Text="{Binding Path=Name}"
+                               Style="{StaticResource MaterialDesignDisplay1TextBlock}"
+                               FontSize="20"/>
+                                    <materialDesign:PackIcon Kind="SecurityAccount"  
+                                             VerticalAlignment="Center"
+                                             Height="20" Width="20"
+                                             Foreground="#000"
+                                             Margin="20 0 0 0"/>
+                                </StackPanel>
+                            </CheckBox>
+                        </Border>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding IsSelect}" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#FF88BB88" />
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
     </Grid>
 </UserControl>
