@@ -44,10 +44,10 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <Grid Grid.Row="1">
-                <Button  Padding="20 10" Width="auto" Height="auto"
+                <Button  Padding="20 10" Margin="0 0 10 0" Width="auto" Height="auto"
                          Command="{Binding GoToAdminPageCommand}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Bottom"
                      HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ArrowLeft" 
@@ -57,8 +57,7 @@
                                FontSize="18"/>
                     </StackPanel>
                 </Button>
-            </Grid>
-            <StackPanel Grid.Row="1" 
+                <StackPanel Grid.Row="1" 
                         Orientation="Horizontal" 
                         HorizontalAlignment="Right"
                         Margin="20 10">
@@ -81,6 +80,7 @@
                                              Height="24" Width="24" />
                 </Button>
             </StackPanel>
+            </Grid>
         </Grid>
         <materialDesign:Card Grid.Column="1" Margin="20 10"
                              Padding="20"

@@ -20,9 +20,8 @@
             <ListBox Foreground="#000" 
                  Background="#fff"
                  Margin="20 10"
-                 BorderThickness="5"
-                 BorderBrush="#FF88BB88"
-                 MinWidth="400"
+                 MinWidth="300"
+                 Width="Auto"
                  ItemsSource="{Binding Services}"
                  SelectedItem="{Binding SelectService}">
                 <ListBox.ItemTemplate>
@@ -44,7 +43,7 @@
                 <Button  Padding="20 10" Width="auto" Height="auto"
                          Command="{Binding GoToAdminPageCommand}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Bottom"
                      HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="ArrowLeft" 
@@ -54,7 +53,7 @@
                                FontSize="18"/>
                     </StackPanel>
                 </Button>
-            </Grid>
+
             <StackPanel Grid.Row="1" 
                         Orientation="Horizontal" 
                         HorizontalAlignment="Right"
@@ -73,6 +72,7 @@
                                              Height="24" Width="24" />
                 </Button>
             </StackPanel>
+            </Grid>
         </Grid>
         <materialDesign:Card Grid.Column="1" Margin="20 10"
                              Padding="20" VerticalAlignment="Center"

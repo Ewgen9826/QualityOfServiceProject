@@ -29,7 +29,7 @@ namespace QualityOfServiceApp.Repository
 
         public IEnumerable<Service> GetAll()
         {
-            var services = context.Services.Include(b => b.Banks).ToList();
+            var services = context.Services.ToList();
             return services;
         }
 

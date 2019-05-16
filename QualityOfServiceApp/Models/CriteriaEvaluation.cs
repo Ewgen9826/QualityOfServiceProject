@@ -8,11 +8,13 @@ namespace QualityOfServiceApp.Models
         public string Name { get; set; }
 
         public ICollection<Rating> Ratings { get; set; }
-        public ICollection<Service> Services { get; set; }
+
+        public int ServiceId { get; set; }
+        public Service Service { get; set; }
+
         public CriteriaEvaluation()
         {
             Ratings = new List<Rating>();
-            Services = new List<Service>();
         }
     }
 }

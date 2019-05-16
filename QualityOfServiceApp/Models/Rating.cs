@@ -1,4 +1,6 @@
-﻿namespace QualityOfServiceApp.Models
+﻿using System.Collections.Generic;
+
+namespace QualityOfServiceApp.Models
 {
     public class Rating
     {
@@ -8,5 +10,11 @@
 
         public int CriteriaEvaluationId { get; set; }
         public CriteriaEvaluation CriteriaEvaluation { get; set; }
+
+        public ICollection<Bank> Banks { get; set; }
+        public Rating()
+        {
+            Banks = new List<Bank>();
+        }
     }
 }

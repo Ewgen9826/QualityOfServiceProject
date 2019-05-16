@@ -4,9 +4,429 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+             mc:Ignorable="d" Height="Auto" Width="Auto">
     <Grid>
-        <TextBlock FontSize="32" Text="OverallResult"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <!--Материальность-->
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
+                             Padding="20" Margin="20" HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Stretch"
+                             Background="#fff"
+                             >
+            <StackPanel Orientation="Vertical" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <TextBlock Text="Материальность" FontWeight="Bold" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                           Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+                    
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="80" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="20 0">
+                        <TextBlock Text="Восприятие" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ffc107"
+                                     Value="60" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Значимость" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ef5350"
+                                     Value="40" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
+                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
+                    <ComboBoxItem IsSelected="True">
+                        Общие показатели
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М1
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М2
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М3
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!--Надежность-->
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
+                             Padding="20" Margin="20" HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Stretch"
+                             Grid.Column="1"
+                             Background="#fff"
+                             >
+            <StackPanel Orientation="Vertical" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <TextBlock Text="Надежность" FontWeight="Bold" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                           Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="80" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="20 0">
+                        <TextBlock Text="Восприятие" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ffc107"
+                                     Value="60" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Значимость" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ef5350"
+                                     Value="40" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
+                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
+                    <ComboBoxItem IsSelected="True">
+                        Общие показатели
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М1
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М2
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М3
+                    </ComboBoxItem>
+                </ComboBox>
+
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!--Отзывчивость-->
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
+                             Padding="20" Margin="20" HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Stretch"
+                             Grid.Column="2"
+                             Background="#fff"
+                             >
+            <StackPanel Orientation="Vertical" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <TextBlock Text="Отзывчивость" FontWeight="Bold" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                           Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="80" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="20 0">
+                        <TextBlock Text="Восприятие" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ffc107"
+                                     Value="60" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ef5350"
+                                     Value="40" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
+                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
+                    <ComboBoxItem IsSelected="True">
+                        Общие показатели
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М1
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М2
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М3
+                    </ComboBoxItem>
+                </ComboBox>
+
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!--Убежденность-->
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
+                             Padding="20" Margin="20" HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Stretch"
+                             Grid.Row="1"
+                             Background="#fff"
+                             >
+            <StackPanel Orientation="Vertical" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <TextBlock Text="Убежденность" FontWeight="Bold" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                           Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="80" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="20 0">
+                        <TextBlock Text="Восприятие" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ffc107"
+                                     Value="60" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Значимость" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ef5350"
+                                     Value="40" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
+                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
+                    <ComboBoxItem IsSelected="True">
+                        Общие показатели
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М1
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М2
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М3
+                    </ComboBoxItem>
+                </ComboBox>
+
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!--Сочувствие-->
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
+                             Padding="20" Margin="20" HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Stretch"
+                             Grid.Row="1"
+                             Grid.Column="1"
+                             Background="#fff"
+                             >
+            <StackPanel Orientation="Vertical" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <TextBlock Text="Сочувствие" FontWeight="Bold" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                           Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="80" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="20 0">
+                        <TextBlock Text="Восприятие" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ffc107"
+                                     Value="60" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Значимость" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ef5350"
+                                     Value="40" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
+                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
+                    <ComboBoxItem IsSelected="True">
+                        Общие показатели
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М1
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М2
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        М3
+                    </ComboBoxItem>
+                </ComboBox>
+
+            </StackPanel>
+        </materialDesign:Card>
+
+        <!--Отзывчивость-->
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
+                             Padding="20" Margin="20" HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Stretch"
+                             Grid.Column="2"
+                             Grid.Row="1"
+                             Background="#fff"
+                             >
+            <StackPanel Orientation="Vertical" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
+                <TextBlock Text="Отзывчивость" FontWeight="Bold" Foreground="{StaticResource PrimaryHueDarkBrush}"
+                           Style="{StaticResource MaterialDesignSubheadingTextBlock}"
+                           HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal" Margin="0 10">
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="80" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Margin="20 0">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ffc107"
+                                     Value="60" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Foreground="#ef5350"
+                                     Value="40" HorizontalAlignment="Center"
+                                     Height="50" Width="50" Margin="0 5"/>
+                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                    </StackPanel>
+
+                </StackPanel>
+            </StackPanel>
+        </materialDesign:Card>
+
+        <Button Grid.Row="2"  Padding="20 10" Width="auto" Height="auto"
+                         Command="{Binding GoToAdminPageCommand}"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                        VerticalAlignment="Center"
+                     HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="ArrowLeft" 
+                                             VerticalAlignment="Center"
+                                             Height="25" Width="25"/>
+                <TextBlock Text="Назад" Margin="10 0" 
+                               FontSize="18"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

@@ -6,14 +6,17 @@
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Height="Auto" Width="Auto">
+             >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0"
-                Width="Auto" Height="Auto"
+                 MinHeight="200"
+                MaxHeight="500"
+                MinWidth="200"
+                MaxWidth="500"
                 Margin="120" Padding="30"
                 Command="{Binding GoToQuestionnaireCommand}">
             <Border CornerRadius="20">
@@ -32,8 +35,10 @@
             </Border>
         </Button>
         <Button Grid.Column="1" 
-                Height="Auto" 
-                Width="Auto"
+                MinHeight="200"
+                MaxHeight="500"
+                MinWidth="200"
+                MaxWidth="500"
                 Margin="120" Padding="30"
                 Command="{Binding GoToLoginCommand}">
             <Border CornerRadius="20">
