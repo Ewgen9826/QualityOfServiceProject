@@ -403,7 +403,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
-
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -441,6 +441,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
 
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
@@ -476,6 +477,7 @@
                             </TextBlock>
                             <Grid Margin="20 0"  HorizontalAlignment="Center">
                                 <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
 

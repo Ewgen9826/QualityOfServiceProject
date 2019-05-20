@@ -105,6 +105,7 @@ namespace QualityOfServiceApp.ViewModels
                     M_Expectation = 0;
                     M_Perception = 0;
                     M_Significance = 0;
+                    return;
                 }
                 M_Expectation = ratings.Average(r => r.Expectation);
                 M_Perception = ratings.Average(r => r.Perception);
@@ -199,6 +200,7 @@ namespace QualityOfServiceApp.ViewModels
                     R_Expectation = 0;
                     R_Perception = 0;
                     R_Significance = 0;
+                    return;
                 }
                 R_Expectation = ratings.Average(r => r.Expectation);
                 R_Perception = ratings.Average(r => r.Perception);
@@ -293,6 +295,7 @@ namespace QualityOfServiceApp.ViewModels
                     Res_Expectation = 0;
                     Res_Perception = 0;
                     Res_Significance = 0;
+                    return;
                 }
                 Res_Expectation = ratings.Average(r => r.Expectation);
                 Res_Perception = ratings.Average(r => r.Perception);
@@ -388,6 +391,7 @@ namespace QualityOfServiceApp.ViewModels
                     C_Expectation = 0;
                     C_Perception = 0;
                     C_Significance = 0;
+                    return;
                 }
                 C_Expectation = ratings.Average(r => r.Expectation);
                 C_Perception = ratings.Average(r => r.Perception);
@@ -482,6 +486,7 @@ namespace QualityOfServiceApp.ViewModels
                     S_Expectation = 0;
                     S_Perception = 0;
                     S_Significance = 0;
+                    return;
                 }
                 S_Expectation = ratings.Average(r => r.Expectation);
                 S_Perception = ratings.Average(r => r.Perception);
