@@ -135,23 +135,7 @@
                 <ComboBoxItem>
                     Руководитель
                 </ComboBoxItem>
-            </ComboBox>        </StackPanel>
-        <controls:StepButtonBar Grid.Row="4" 
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                Margin="10">
-            <controls:StepButtonBar.Back>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" Margin="20 0"/>
-                    <TextBlock Text="Назад"/>
-                </StackPanel>
-            </controls:StepButtonBar.Back>
-            <controls:StepButtonBar.Continue>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Далее"/>
-                    <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" Margin="20 0"/>
-                </StackPanel>
-            </controls:StepButtonBar.Continue>
-        </controls:StepButtonBar>
+            </ComboBox>        
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -33,5 +33,10 @@ namespace QualityOfServiceApp.ViewModels
         {
             Mediator.Notify("GoToOverallResultPage", null);
         }));
+
+        public void UpdateBinding()
+        {
+
+        }
     }
 }

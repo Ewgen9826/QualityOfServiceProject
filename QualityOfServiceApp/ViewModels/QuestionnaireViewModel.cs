@@ -15,24 +15,16 @@ namespace QualityOfServiceApp.ViewModels
         private readonly BankRepository bankRepository;
         private readonly ServiceRepository serviceRepository;
         private readonly DataRepository dataRepository;
-        private readonly ApplicationContext context;
+        private ApplicationContext context;
         public QuestionnaireViewModel()
         {
             context = new ApplicationContext();
             bankRepository = new BankRepository();
             serviceRepository = new ServiceRepository();
             dataRepository = new DataRepository();
-            Banks = new ObservableCollection<Bank>();
             Services = new ObservableCollection<Service>();
-            CriteriaEvaluations = new ObservableCollection<SelectRatingViewModel>();
-            foreach (var item in bankRepository.GetAll())
-            {
-                Banks.Add(item);
-            }
-            foreach (var item in dataRepository.GetCriteriaEvaluations())
-            {
-                CriteriaEvaluations.Add(new SelectRatingViewModel { Name = item.Name, Expectation=1, Perception=2 });
-            }
+
+
         }
         #endregion
 
@@ -53,9 +45,12 @@ namespace QualityOfServiceApp.ViewModels
         #region Notify Properti
         public ObservableCollection<Bank> Banks { get; set; }
         public ObservableCollection<Service> Services { get; set; }
-        public ObservableCollection<SelectRatingViewModel> CriteriaEvaluations { get; set; }
+
+        public ObservableCollection<SelectRatingViewModel> Criterials { get; set; }
+
 
         private Bank selectBank;
+
         public Bank SelectBank
         {
             get => selectBank;
@@ -126,31 +121,82 @@ namespace QualityOfServiceApp.ViewModels
 
         private void SetService()
         {
+            if (Services == null)
+                Services = new ObservableCollection<Service>();
             Services.Clear();
             foreach (var item in SelectBank.Services)
             {
                 Services.Add(item);
             }
         }
+        private void SetBanks()
+        {
+            if (Banks == null)
+                Banks = new ObservableCollection<Bank>();
+            Banks.Clear();
+            foreach (var item in bankRepository.GetFillBanks())
+            {
+                Banks.Add(item);
+            }
+        }
+
+        private void SetCriterials()
+        {
+            if (Criterials == null)
+                Criterials = new ObservableCollection<SelectRatingViewModel>();
+            for (int i = 0; i < context.CriteriaEvaluations.Count(); i++)
+            {
+                Criterials.Add(new SelectRatingViewModel());
+            }
+        }
+
+
         private void CompletedQuestionnary()
         {
-            foreach (var item in CriteriaEvaluations)
+            using (context=new ApplicationContext ())
             {
-                var criteria = context.CriteriaEvaluations.Include(r => r.Ratings).FirstOrDefault(c => c.Name == item.Name);
-                if (criteria == null) return;
-                criteria.Ratings.Add(new Rating { Expectation = item.Expectation, Perception = item.Perception });
+                var client = new Client
+                {
+                    Age = this.Age,
+                    Education = this.Education,
+                    Gender = this.Gender,
+                    SocialGroup = this.SocialGroup
+                };
+                var bank = context.Banks.FirstOrDefault(b => b.Name == SelectBank.Name);
+                context.Entry(bank).Collection(c => c.Clients).Load();
+                bank.Clients.Add(client);
+                context.Entry(bank).Collection(s => s.Services).Load();
+                context.Entry(bank.Services.FirstOrDefault(c => c.Name == SelectService.Name)).Collection(c => c.CategoryEvaluations).Load();
+                int j = 0;
+                foreach (var category in bank.Services.FirstOrDefault(s=>s.Name==SelectService.Name).CategoryEvaluations)
+                {
+                    context.Entry(category).Collection(c => c.CriteriaEvaluations).Load();
+                    var criterials = category.CriteriaEvaluations;
+                    foreach (var c in criterials)
+                    {
+                        Rating r = new Rating
+                        {
+                            Expectation = Criterials[j].Expectation,
+                            Perception = Criterials[j].Perception,
+                            Significance=Criterials[j].Significance
+                        };
+                        r.Client = client;
+                        r.CriteriaEvaluationId = c.Id;
+                        r.BankId = bank.Id;
+                        r.ServiceId = SelectService.Id;
+                        context.Ratings.Add(r);
+                        j++;
+                    }
+                }
+                context.SaveChanges();
             }
-            var bank = context.Banks.Include(c => c.Clients).FirstOrDefault(b => b.Name == SelectBank.Name);
-            if (bank == null) return;
-            var client = new Client
-            {
-                Gender = this.Gender,
-                Age = this.Age,
-                Education = this.Education,
-                SocialGroup = this.SocialGroup
-            };
-            bank.Clients.Add(client);
-            context.SaveChanges();
+            Mediator.Notify("GoToHomePage", null);
+        }
+
+        public void UpdateBinding()
+        {
+            SetBanks();
+            SetCriterials();
         }
     }
 }

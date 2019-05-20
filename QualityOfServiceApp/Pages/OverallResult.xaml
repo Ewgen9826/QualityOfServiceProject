@@ -5,8 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-
+             xmlns:converter="clr-namespace:QualityOfServiceApp.Converters"
              mc:Ignorable="d" Height="Auto" Width="Auto">
+    <UserControl.Resources>
+        <converter:CircleBarConverter x:Key="circleBarConverter"/>
+        <converter:ColorBarConverter x:Key="colorBarConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -18,7 +22,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Материальность-->
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
                              Padding="20" Margin="20" HorizontalAlignment="Stretch" 
@@ -32,14 +36,16 @@
                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                            HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal" Margin="0 10">
-                    
+
                     <StackPanel Orientation="Vertical">
                         <TextBlock Text="Ожидание" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Value="80" HorizontalAlignment="Center"
+                                     Foreground="{Binding Path=M_Expectation, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding M_Expectation, Converter={StaticResource circleBarConverter}}" 
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                        <TextBlock Text="{Binding M_Expectation, StringFormat={}{0:F}}" FontSize="20" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -47,10 +53,10 @@
                         <TextBlock Text="Восприятие" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ffc107"
-                                     Value="60" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=M_Perception, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding M_Perception, Converter={StaticResource circleBarConverter}}" HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding M_Perception, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -58,30 +64,26 @@
                         <TextBlock Text="Значимость" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ef5350"
-                                     Value="40" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=M_Significance, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding M_Significance, Converter={StaticResource circleBarConverter}}"
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding M_Significance, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
 
                 </StackPanel>
-                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
-                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
-                    <ComboBoxItem IsSelected="True">
-                        Общие показатели
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М1
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М2
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М3
-                    </ComboBoxItem>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16"
+                          SelectedItem="{Binding M_SelectItem, Mode=TwoWay}"
+                          ItemsSource="{Binding Materialities}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
             </StackPanel>
         </materialDesign:Card>
@@ -105,9 +107,11 @@
                         <TextBlock Text="Ожидание" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Value="80" HorizontalAlignment="Center"
+                                     Foreground="{Binding Path=R_Expectation, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding R_Expectation, Converter={StaticResource circleBarConverter}}" 
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                        <TextBlock Text="{Binding R_Expectation, StringFormat={}{0:F}}" FontSize="20" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -115,10 +119,10 @@
                         <TextBlock Text="Восприятие" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ffc107"
-                                     Value="60" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=R_Perception, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding R_Perception, Converter={StaticResource circleBarConverter}}" HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding R_Perception, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -126,30 +130,26 @@
                         <TextBlock Text="Значимость" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ef5350"
-                                     Value="40" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=R_Significance, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding R_Significance, Converter={StaticResource circleBarConverter}}"
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding R_Significance, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
 
                 </StackPanel>
-                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
-                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
-                    <ComboBoxItem IsSelected="True">
-                        Общие показатели
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М1
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М2
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М3
-                    </ComboBoxItem>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16"
+                          SelectedItem="{Binding R_SelectItem, Mode=TwoWay}"
+                          ItemsSource="{Binding Reliabilities}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
 
             </StackPanel>
@@ -174,9 +174,11 @@
                         <TextBlock Text="Ожидание" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Value="80" HorizontalAlignment="Center"
+                                     Foreground="{Binding Path=Res_Expectation, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding Res_Expectation, Converter={StaticResource circleBarConverter}}" 
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                        <TextBlock Text="{Binding Res_Expectation, StringFormat={}{0:F}}" FontSize="20" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -184,41 +186,37 @@
                         <TextBlock Text="Восприятие" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ffc107"
-                                     Value="60" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=Res_Perception, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding Res_Perception, Converter={StaticResource circleBarConverter}}" HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding Res_Perception, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
+                        <TextBlock Text="Значимость" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ef5350"
-                                     Value="40" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=Res_Significance, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding Res_Significance, Converter={StaticResource circleBarConverter}}"
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding Res_Significance, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
 
                 </StackPanel>
-                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
-                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
-                    <ComboBoxItem IsSelected="True">
-                        Общие показатели
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М1
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М2
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М3
-                    </ComboBoxItem>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16"
+                          SelectedItem="{Binding Res_SelectItem, Mode=TwoWay}"
+                          ItemsSource="{Binding Responsiveness}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
 
             </StackPanel>
@@ -243,9 +241,11 @@
                         <TextBlock Text="Ожидание" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Value="80" HorizontalAlignment="Center"
+                                     Foreground="{Binding Path=C_Expectation, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding C_Expectation, Converter={StaticResource circleBarConverter}}" 
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                        <TextBlock Text="{Binding C_Expectation, StringFormat={}{0:F}}" FontSize="20" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -253,10 +253,10 @@
                         <TextBlock Text="Восприятие" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ffc107"
-                                     Value="60" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=C_Perception, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding C_Perception, Converter={StaticResource circleBarConverter}}" HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding C_Perception, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -264,30 +264,26 @@
                         <TextBlock Text="Значимость" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ef5350"
-                                     Value="40" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=C_Significance, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding C_Significance, Converter={StaticResource circleBarConverter}}"
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding C_Significance, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
 
                 </StackPanel>
-                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
-                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
-                    <ComboBoxItem IsSelected="True">
-                        Общие показатели
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М1
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М2
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М3
-                    </ComboBoxItem>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16"
+                          SelectedItem="{Binding C_SelectItem, Mode=TwoWay}"
+                          ItemsSource="{Binding Convictions}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
 
             </StackPanel>
@@ -313,9 +309,11 @@
                         <TextBlock Text="Ожидание" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Value="80" HorizontalAlignment="Center"
+                                     Foreground="{Binding Path=S_Expectation, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding S_Expectation, Converter={StaticResource circleBarConverter}}" 
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
+                        <TextBlock Text="{Binding S_Expectation, StringFormat={}{0:F}}" FontSize="20" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -323,10 +321,10 @@
                         <TextBlock Text="Восприятие" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ffc107"
-                                     Value="60" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=S_Perception, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding S_Perception, Converter={StaticResource circleBarConverter}}" HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding S_Perception, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
@@ -334,30 +332,26 @@
                         <TextBlock Text="Значимость" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ef5350"
-                                     Value="40" HorizontalAlignment="Center"
+                                      Foreground="{Binding Path=S_Significance, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding S_Significance, Converter={StaticResource circleBarConverter}}"
+                                     HorizontalAlignment="Center"
                                      Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                        <TextBlock Text="{Binding S_Significance, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                     </StackPanel>
 
 
                 </StackPanel>
-                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" IsReadOnly="True"
-                          IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16">
-                    <ComboBoxItem IsSelected="True">
-                        Общие показатели
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М1
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М2
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        М3
-                    </ComboBoxItem>
+                <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="16"
+                          SelectedItem="{Binding S_SelectItem, Mode=TwoWay}"
+                          ItemsSource="{Binding Sympathies}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
                 </ComboBox>
 
             </StackPanel>
@@ -371,47 +365,55 @@
                              Grid.Row="1"
                              Background="#fff"
                              >
-            <StackPanel Orientation="Vertical" 
-                        HorizontalAlignment="Center" 
-                        VerticalAlignment="Center">
-                <TextBlock Text="Отзывчивость" FontWeight="Bold" Foreground="{StaticResource PrimaryHueDarkBrush}"
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Глобальные коэффиценты качества"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource PrimaryHueDarkBrush}"
                            Style="{StaticResource MaterialDesignSubheadingTextBlock}"
                            HorizontalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal" Margin="0 10">
-
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
-                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Value="80" HorizontalAlignment="Center"
-                                     Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical" Margin="20 0">
-                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
-                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ffc107"
-                                     Value="60" HorizontalAlignment="Center"
-                                     Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="Ожидание" HorizontalAlignment="Center"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
-                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ef5350"
-                                     Value="40" HorizontalAlignment="Center"
-                                     Height="50" Width="50" Margin="0 5"/>
-                        <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
-                    </StackPanel>
-
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
+                    <TextBlock Text="Ожидание:" Margin="10 0"
+                               Foreground="{StaticResource PrimaryHueDarkBrush}"
+                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+                    <TextBlock Text="{Binding OverallExpectation, StringFormat={}{0:F}}" FontWeight="Bold"
+                              Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
                 </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
+                    <TextBlock Text="Восприятие:"
+                               Foreground="{StaticResource PrimaryHueDarkBrush}"
+                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+                    <TextBlock Text="{Binding OverallPerception, StringFormat={}{0:F}}" Margin="10 0" FontWeight="Bold"
+                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+                </StackPanel>
+
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
+                    <TextBlock Text="Значимость:"
+                               Foreground="{StaticResource PrimaryHueDarkBrush}"
+                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+                    <TextBlock Text="{Binding OverallSignificance, StringFormat={}{0:F}}" Margin="10 0" FontWeight="Bold"
+                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock Text="Коэффицент качества:"
+                               Foreground="{StaticResource PrimaryHueDarkBrush}"
+                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+                    <TextBlock Text="{Binding QualityFactor, StringFormat={}{0:F}}" Margin="10 0" FontWeight="Bold"
+                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="0 10" Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}}">
+                    <TextBlock Text="Результаты:" HorizontalAlignment="Center"
+                               Foreground="{StaticResource PrimaryHueDarkBrush}"
+                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+                    <TextBlock Text="{Binding ResultMessage}"
+                               TextWrapping="Wrap" FontWeight="Bold" FontSize="13"
+                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                </StackPanel>
+
             </StackPanel>
         </materialDesign:Card>
 

@@ -50,5 +50,10 @@ namespace QualityOfServiceApp.ViewModels
             if (user == null) return false;
             return true;
         }
+
+        public void UpdateBinding()
+        {
+
+        }
     }
 }

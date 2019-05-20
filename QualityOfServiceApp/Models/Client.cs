@@ -12,10 +12,12 @@ namespace QualityOfServiceApp.Models
         public string SocialGroup { get; set; }
 
         public ICollection<Bank> Banks { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
 
         public Client()
         {
             Banks = new List<Bank>();
+            Ratings = new List<Rating>();
         }
     }
 }

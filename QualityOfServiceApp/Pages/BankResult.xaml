@@ -5,7 +5,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:converter="clr-namespace:QualityOfServiceApp.Converters"
              Margin="0 20 0 0">
+    <UserControl.Resources>
+        <converter:CircleBarConverter x:Key="circleBarConverter"/>
+        <converter:ColorBarConverter x:Key="colorBarConverter"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
@@ -27,7 +32,7 @@
                  MinWidth="400"
                  Width="Auto"
                  ItemsSource="{Binding Banks}"
-                 SelectedItem="{Binding SeleckBank}">
+                 SelectedItem="{Binding BankSelect, Mode=TwoWay}">
                 <ListBox.Effect>
                     <DropShadowEffect ShadowDepth="1" BlurRadius="20"/>
                 </ListBox.Effect>
@@ -73,21 +78,16 @@
                 <StackPanel Orientation="Vertical" 
                         HorizontalAlignment="Center" 
                         VerticalAlignment="Center">
-                    <ComboBox materialDesign:HintAssist.Hint="Выбор критерия" 
+                    <ComboBox materialDesign:HintAssist.Hint="Выбор услуги" 
                               Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                              HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="18">
-                        <ComboBoxItem IsSelected="True">
-                            Материальность
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            М1
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            М2
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            М3
-                        </ComboBoxItem>
+                              HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="18"
+                              ItemsSource="{Binding Services}"
+                              SelectedItem="{Binding ServiceSelect, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
                     </ComboBox>
                     <StackPanel Orientation="Horizontal" Margin="0 10">
 
@@ -95,20 +95,22 @@
                             <TextBlock FontSize="16" Text="Ожидание" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                             <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Value="80" HorizontalAlignment="Center"
-                                     Height="60" Width="60" Margin="0 5"/>
-                            <TextBlock Text="4.6" FontSize="20" HorizontalAlignment="Center"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
+                                         Foreground="{Binding Path=Expectation, Converter={StaticResource colorBarConverter}}"
+                                         Value="{Binding Expectation, Converter={StaticResource circleBarConverter}}" HorizontalAlignment="Center"
+                                         Height="60" Width="60" Margin="0 5"/>
+                            <TextBlock FontSize="20" HorizontalAlignment="Center"
+                                       Style="{StaticResource MaterialDesignBody2TextBlock}"
+                                       Text="{Binding Path=Expectation, StringFormat={}{0:F}}"/>
                         </StackPanel>
 
                         <StackPanel Orientation="Vertical" Margin="20 0">
                             <TextBlock FontSize="16" Text="Восприятие" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                             <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ffc107"
-                                     Value="60" HorizontalAlignment="Center"
+                                     Foreground="{Binding Path=Perception, Converter={StaticResource colorBarConverter}}"
+                                     Value="{Binding Perception, Converter={StaticResource circleBarConverter}}" HorizontalAlignment="Center"
                                      Height="60" Width="60" Margin="0 5"/>
-                            <TextBlock Text="3.4" HorizontalAlignment="Center" FontSize="20"
+                            <TextBlock Text="{Binding Perception, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         </StackPanel>
 
@@ -116,30 +118,33 @@
                             <TextBlock FontSize="16"  Text="Значимость" HorizontalAlignment="Center"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                             <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
-                                     Foreground="#ef5350"
-                                     Value="40" HorizontalAlignment="Center"
+                                     Foreground="{Binding Path=Significance, Converter={StaticResource colorBarConverter}}"
+                                      Value="{Binding Significance, Converter={StaticResource circleBarConverter}}"
+                                      HorizontalAlignment="Center"
                                      Height="60" Width="60" Margin="0 5"/>
-                            <TextBlock Text="2.9" HorizontalAlignment="Center" FontSize="20"
+                            <TextBlock Text="{Binding Significance, StringFormat={}{0:F}}" HorizontalAlignment="Center" FontSize="20"
                                Style="{StaticResource MaterialDesignBody2TextBlock}"/>
                         </StackPanel>
 
 
                     </StackPanel>
+                    <ComboBox materialDesign:HintAssist.Hint="Выбор критерия" 
+                              Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                              HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="18"
+                              ItemsSource="{Binding Categorys, Mode=TwoWay}"
+                              SelectedItem="{Binding CategorySelect}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
                     <ComboBox materialDesign:HintAssist.Hint="Выбор подкритерия"
                               Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                              HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="18">
-                        <ComboBoxItem IsSelected="True">
-                            Общие показатели
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            М1
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            М2
-                        </ComboBoxItem>
-                        <ComboBoxItem>
-                            М3
-                        </ComboBoxItem>
+                              HorizontalAlignment="Stretch" Margin="0 10 0 0" FontSize="18"
+                               ItemsSource="{Binding Path=Criaterials, Mode=TwoWay}"
+                              DisplayMemberPath="Name"
+                              SelectedItem="{Binding CriaterialSelect}">
                     </ComboBox>
                 </StackPanel>
             </materialDesign:Card>

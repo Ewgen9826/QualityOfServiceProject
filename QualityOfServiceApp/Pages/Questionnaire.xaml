@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              xmlns:model="clr-namespace:MaterialDesignExtensions.Model;assembly=MaterialDesignExtensions"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" Height="700" Width="Auto"
+             mc:Ignorable="d" Width="Auto" Height="Auto" 
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid>
         <!--Stepper Section-->
@@ -25,7 +25,19 @@
                                FontSize="16"/>
                 </model:Step.Header>
                 <model:Step.Content>
-                    <local:Subdivision/>
+                    <StackPanel Orientation="Vertical">
+                        <local:Subdivision/>
+                        <controls:StepButtonBar VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Margin="30">
+                            <controls:StepButtonBar.Continue>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Далее"/>
+                                    <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" Margin="20 0"/>
+                                </StackPanel>
+                            </controls:StepButtonBar.Continue>
+                        </controls:StepButtonBar>
+                    </StackPanel>
                 </model:Step.Content>
             </model:Step>
 
@@ -37,7 +49,26 @@
                                FontSize="16"/>
                 </model:Step.Header>
                 <model:Step.Content>
-                    <local:PersonalData/>
+                    <StackPanel Orientation="Vertical">
+                        <local:PersonalData/>
+                        <controls:StepButtonBar VerticalAlignment="Bottom"
+                                HorizontalAlignment="Center"
+                                Margin="10">
+                            <controls:StepButtonBar.Back>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" Margin="20 0"/>
+                                    <TextBlock Text="Назад"/>
+                                </StackPanel>
+                            </controls:StepButtonBar.Back>
+                            <controls:StepButtonBar.Continue>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Далее"/>
+                                    <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" Margin="20 0"/>
+                                </StackPanel>
+                            </controls:StepButtonBar.Continue>
+                        </controls:StepButtonBar>
+
+                    </StackPanel>
                 </model:Step.Content>
             </model:Step>
 
@@ -49,7 +80,22 @@
                                Style="{StaticResource MaterialDesignTitleTextBlock}"/>
                 </model:Step.Header>
                 <model:Step.Content>
-                    <local:Ratings/>
+                    <StackPanel>
+                        <local:Ratings/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <controls:StepButtonBar HorizontalAlignment="Center"
+                                Margin="0 10">
+                            <controls:StepButtonBar.Back>
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" Margin="20 0"/>
+                                    <TextBlock Text="Назад"/>
+                                </StackPanel>
+                            </controls:StepButtonBar.Back>
+                        </controls:StepButtonBar>
+                            <Button Command="{Binding CompletedCommand}">Закончить</Button>
+                        </StackPanel>
+
+                    </StackPanel>
                 </model:Step.Content>
             </model:Step>
 

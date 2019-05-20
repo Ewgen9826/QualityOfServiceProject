@@ -8,13 +8,13 @@ namespace QualityOfServiceApp.Models
         {
             Database.CreateIfNotExists();
         }
-        public DbSet<Bank> Banks { get; set; }
-        public DbSet<Service> Services { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Client> Clients { get; set; }
-        public DbSet<CategoryEvaluation> CategoryEvaluations { get; set; }
-        public DbSet<CriteriaEvaluation> CriteriaEvaluations { get; set; }
-        public DbSet<Rating> Ratings { get; set; }
+        public  DbSet<Bank> Banks { get; set; }
+        public  DbSet<Service> Services { get; set; }
+        public  DbSet<User> Users { get; set; }
+        public  DbSet<Client> Clients { get; set; }
+        public  DbSet<CategoryEvaluation> CategoryEvaluations { get; set; }
+        public  DbSet<CriteriaEvaluation> CriteriaEvaluations { get; set; }
+        public  DbSet<Rating> Ratings { get; set; }
 
 
     }

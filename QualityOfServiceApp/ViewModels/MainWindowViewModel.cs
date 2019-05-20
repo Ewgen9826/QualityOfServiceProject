@@ -104,6 +104,8 @@ namespace QualityOfServiceApp.ViewModels
 
             CurrentPageViewModel = PageViewModels
                 .FirstOrDefault(vm => vm == viewModel);
+            IPageViewModel page = CurrentPageViewModel;
+            page.UpdateBinding();
         }
 
         private void GoToHomePage(object obj)
@@ -114,7 +116,6 @@ namespace QualityOfServiceApp.ViewModels
 
         private void GoToQuestionnairePage(object obj)
         {
-            Header = "Прохождение анкеты";
             ChangeViewModel(PageViewModels[1]);
         }
 

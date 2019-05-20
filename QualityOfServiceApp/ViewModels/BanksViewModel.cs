@@ -2,6 +2,7 @@
 using QualityOfServiceApp.Models;
 using QualityOfServiceApp.Repository;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -11,25 +12,14 @@ namespace QualityOfServiceApp.ViewModels
     public class BanksViewModel : BaseViewModel, IPageViewModel
     {
         #region Repository initial
-        private readonly BankRepository repository;
+        private readonly BankRepository bankRepository;
         private readonly ServiceRepository serviceRepository;
+        private readonly ApplicationContext context;
         public BanksViewModel()
         {
-            repository = new BankRepository();
+            bankRepository = new BankRepository();
             serviceRepository = new ServiceRepository();
-            Banks = new ObservableCollection<Bank>();
-            Services = new ObservableCollection<SelectedViewModel>();
-            SetServiceCollection();
-            SetCollection();
-        }
-
-        private void SetServiceCollection()
-        {
-            Services.Clear();
-            foreach (var item in serviceRepository.GetAll())
-            {
-                Services.Add(new SelectedViewModel { Name = item.Name, IsSelect = false });
-            }
+            context = new ApplicationContext();
         }
 
         #endregion
@@ -56,7 +46,7 @@ namespace QualityOfServiceApp.ViewModels
         private ICommand updateListCommand;
         public ICommand UpdateListCommand => updateListCommand ?? (updateListCommand = new RelayCommand(x =>
         {
-            SetServiceCollection();
+           
         }));
         #endregion
 
@@ -129,7 +119,8 @@ namespace QualityOfServiceApp.ViewModels
                 Name = this.Name,
                 Region = this.Region,
                 Neighborhood = this.Neighborhood,
-                Locality = this.Locality
+                Locality = this.Locality,
+                Services = new List<Service>()
             };
             var context = new ApplicationContext();
             foreach (var item in Services)
@@ -141,23 +132,43 @@ namespace QualityOfServiceApp.ViewModels
                     bank.Services.Add(service);
                 }
             }
-            repository.Add(bank);
-            repository.SaveAll();
-            Banks.Add(bank);
+            var newBank=context.Banks.Add(bank);
+            context.SaveChanges();
+            if (newBank == null) return;
+            Banks.Add(newBank);
         }
         private void RemoveBank()
         {
             if (SeleckBank == null) return;
-            repository.Delete(SeleckBank);
-            repository.SaveAll();
+            var deleteBank = bankRepository.Delete(SeleckBank);
+            if (deleteBank == null) return;
             Banks.Remove(SeleckBank);
         }
-        private void SetCollection()
+        private void SetBanks()
         {
-            foreach (var item in repository.GetAll())
+            if (Banks == null)
+                Banks = new ObservableCollection<Bank>();
+            Banks.Clear();
+            foreach (var item in bankRepository.GetAll())
             {
                 Banks.Add(item);
             }
+        }
+        private void SetServices()
+        {
+            if (Services == null)
+                Services = new ObservableCollection<SelectedViewModel>();
+            Services.Clear();
+            foreach (var item in serviceRepository.GetAll())
+            {
+                Services.Add(new SelectedViewModel { Name = item.Name, IsSelect = false });
+            }
+        }
+
+        public void UpdateBinding()
+        {
+            SetBanks();
+            SetServices();
         }
         #endregion
     }

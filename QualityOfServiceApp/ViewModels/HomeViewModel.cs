@@ -15,5 +15,9 @@ namespace QualityOfServiceApp.ViewModels
                                                                 {
                                                                     Mediator.Notify("GoToLoginPage", null);
                                                                 }));
+
+        public void UpdateBinding()
+        {
+        }
     }
 }

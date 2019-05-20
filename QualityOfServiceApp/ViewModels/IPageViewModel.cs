@@ -8,5 +8,6 @@ namespace QualityOfServiceApp.ViewModels
 {
     public interface IPageViewModel
     {
+        void UpdateBinding();
     }
 }

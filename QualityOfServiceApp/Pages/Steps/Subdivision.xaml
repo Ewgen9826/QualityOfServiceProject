@@ -18,7 +18,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
                     Margin="0 60">
             <TextBlock Text="Выберите подразделение банка:"
-                       FontSize="32"
+                       FontSize="28"
                        Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                        VerticalAlignment="Center"/>
             <ComboBox SelectedItem="{Binding SelectBank}"
@@ -41,7 +41,7 @@
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
                     Grid.Row="1">
             <TextBlock Text="Выберите услугу банка:"
-                       FontSize="32"
+                       FontSize="28"
                        Style="{StaticResource MaterialDesignDisplay1TextBlock}"
                        VerticalAlignment="Center"/>
             <ComboBox materialDesign:HintAssist.Hint="Выберите услугу банка"
@@ -60,16 +60,5 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
-        <controls:StepButtonBar Grid.Row="2"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                Margin="30">
-            <controls:StepButtonBar.Continue>
-                <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Далее"/>
-                    <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" Margin="20 0"/>
-                </StackPanel>
-            </controls:StepButtonBar.Continue>
-        </controls:StepButtonBar>
     </Grid>
 </UserControl>

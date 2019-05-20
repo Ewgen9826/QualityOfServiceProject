@@ -31,5 +31,15 @@ namespace QualityOfServiceApp.ViewModels
                 OnPropertyChanged("Perception");
             }
         }
+        private double significance;
+        public double Significance
+        {
+            get => significance;
+            set
+            {
+                significance = value;
+                OnPropertyChanged("Significance");
+            }
+        }
     }
 }

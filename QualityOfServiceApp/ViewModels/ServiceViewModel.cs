@@ -13,8 +13,6 @@ namespace QualityOfServiceApp.ViewModels
         public ServiceViewModel()
         {
             repository = new ServiceRepository();
-            Services = new ObservableCollection<Service>();
-            SetCollection();
         }
         #endregion
 
@@ -72,22 +70,28 @@ namespace QualityOfServiceApp.ViewModels
                 Name = this.Name
             };
             repository.Add(service);
-            repository.SaveAll();
             Services.Add(service);
         }
         private void RemoveService()
         {
             if (SelectService == null) return;
             repository.Delete(SelectService);
-            repository.SaveAll();
             Services.Remove(SelectService);
         }
-        private void SetCollection()
+        private void SetServices()
         {
+            if (Services == null)
+                Services = new ObservableCollection<Service>();
+            Services.Clear();
             foreach (var item in repository.GetAll())
             {
                 Services.Add(item);
             }
+        }
+
+        public void UpdateBinding()
+        {
+            SetServices();
         }
         #endregion
 

@@ -1,41 +1,49 @@
 ﻿using QualityOfServiceApp.Models;
-using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QualityOfServiceApp.Repository
 {
     class ServiceRepository : IRepository<Service>
     {
-        private readonly ApplicationContext context;
-
-        public ServiceRepository()
-        {
-            context = new ApplicationContext();
-        }
+        private ApplicationContext context;
         public Service Add(Service item)
         {
-           var service= context.Services.Add(item);
+            Service service = null;
+            using (context=new ApplicationContext ())
+            {
+                var categorys= context.CategoryEvaluations.ToList();
+                foreach (var category in categorys)
+                {
+                    item.CategoryEvaluations.Add(category);
+                }
+                service = context.Services.Add(item);
+                context.SaveChanges();
+            }
             return service;
         }
 
-        public void Delete(Service item)
+        public Service Delete(Service item)
         {
-            context.Services.Remove(item);
+            Service deleteService = null;
+            using (context = new ApplicationContext())
+            {
+                context.Services.Attach(item);
+                deleteService = context.Services.Remove(item);
+                context.SaveChanges();
+            }
+            return deleteService;
         }
 
         public IEnumerable<Service> GetAll()
         {
-            var services = context.Services.ToList();
+            IEnumerable<Service> services = null;
+            using (context=new ApplicationContext())
+            {
+                services = context.Services.ToList();
+            }
             return services;
         }
 
-        public bool SaveAll()
-        {
-            return context.SaveChanges() > 0;
-        }
     }
 }

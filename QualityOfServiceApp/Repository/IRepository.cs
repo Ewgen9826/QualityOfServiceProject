@@ -5,8 +5,7 @@ namespace QualityOfServiceApp.Repository
     interface IRepository<T>
     {
         T Add(T item);
-        void Delete(T item);
+        T Delete(T item);
         IEnumerable<T> GetAll();
-        bool SaveAll();
     }
 }

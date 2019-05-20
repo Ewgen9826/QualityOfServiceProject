@@ -6,14 +6,14 @@
              xmlns:local="clr-namespace:QualityOfServiceApp.Pages"             
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
-             Width="Auto" Height="Auto"
+             Width="Auto" Height="Auto" VerticalAlignment="Stretch"
              mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
+        <ScrollViewer Height="{Binding Path=ActualHeight, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -33,7 +33,7 @@
                         <StackPanel Orientation="Vertical" 
                                     HorizontalAlignment="Center" 
                                     Margin="20 10"
-                                    DataContext="{Binding CriteriaEvaluations[0]}">
+                                    DataContext="{Binding Criterials[0]}">
                             <TextBlock VerticalAlignment="Center" 
                                        FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
@@ -44,6 +44,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -58,12 +59,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" 
                                     HorizontalAlignment="Center" 
                                     Margin="20 10"
-                                    DataContext="{Binding CriteriaEvaluations[1]}">
+                                    DataContext="{Binding Criterials[1]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
@@ -74,6 +82,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -88,12 +97,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" 
                                     HorizontalAlignment="Center" 
                                     Margin="20 10"
-                                    DataContext="{Binding CriteriaEvaluations[2]}">
+                                    DataContext="{Binding Criterials[2]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -103,6 +119,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -117,12 +134,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
                         <StackPanel Orientation="Vertical" 
                                     HorizontalAlignment="Center" 
                                     Margin="20 10"
-                                    DataContext="{Binding CriteriaEvaluations[3]}">
+                                    DataContext="{Binding Criterials[3]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -132,6 +156,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -145,6 +170,13 @@
                                FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -160,8 +192,8 @@
                                    HorizontalAlignment="Center"/>
                     </Expander.Header>
                     <StackPanel Orientation="Vertical">
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[4]}">
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[4]}">
                             <TextBlock VerticalAlignment="Center" 
                                        FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
@@ -172,6 +204,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -186,12 +219,20 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
-                        
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[5]}">
+
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[5]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
@@ -202,6 +243,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -216,11 +258,18 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[6]}">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[6]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -230,6 +279,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -244,11 +294,18 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[7]}">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[7]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -258,6 +315,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -272,11 +330,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
 
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[8]}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[8]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -286,6 +352,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -300,6 +367,13 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
                         
@@ -307,7 +381,7 @@
                     </StackPanel>
                 </Expander>
                 
-                <!--Отзыачивость-->
+                <!--Отзывчивость-->
                 <Expander Grid.Row="2"
                   Background="#ffe4e4e4">
                     <Expander.Header>
@@ -318,7 +392,7 @@
                     <StackPanel Orientation="Vertical">
 
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[9]}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[9]}">
                             <TextBlock VerticalAlignment="Center" 
                                        FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
@@ -329,6 +403,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -343,11 +418,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[10]}">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[10]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
@@ -358,6 +441,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -372,11 +456,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[11]}">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[11]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -386,6 +478,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -400,11 +493,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[12]}">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Responsiveness[12]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -414,6 +515,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -427,6 +529,13 @@
                                FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -444,9 +553,9 @@
                                    HorizontalAlignment="Center"/>
                     </Expander.Header>
                     <StackPanel Orientation="Vertical">
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding CriteriaEvaluations[13]}">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding Criterials[13]}">
                             <TextBlock VerticalAlignment="Center" 
                                        FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
@@ -457,6 +566,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -471,11 +581,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
 
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding CriteriaEvaluations[14]}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding Criterials[14]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
@@ -486,6 +604,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -500,11 +619,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding CriteriaEvaluations[15]}">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding Criterials[15]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -514,6 +641,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -528,11 +656,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
-                        
-                        
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding CriteriaEvaluations[16]}">
+
+
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10"  DataContext="{Binding Convictions[16]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -542,6 +678,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -556,6 +693,14 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
+
                             </Grid>
                         </StackPanel>
                         
@@ -574,7 +719,7 @@
                     <StackPanel Orientation="Vertical">
 
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[17]}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[17]}">
                             <TextBlock VerticalAlignment="Center" 
                                        FontSize="20"
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
@@ -585,6 +730,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -599,11 +745,18 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
 
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[18]}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[18]}">
                             <TextBlock VerticalAlignment="Center" 
                                        Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
@@ -614,6 +767,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -628,11 +782,18 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
 
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[19]}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[19]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -642,6 +803,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -656,11 +818,19 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
 
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[20]}">
+                        
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[20]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -670,6 +840,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -684,11 +855,18 @@
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
                                 </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
+                                </StackPanel>
                             </Grid>
                         </StackPanel>
 
 
-                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding CriteriaEvaluations[21]}">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="20 10" DataContext="{Binding Criterials[21]}">
                             <TextBlock VerticalAlignment="Center" Foreground="{StaticResource PrimaryHueDarkBrush}"
                        FontSize="20"
                        Style="{StaticResource MaterialDesignTitleTextBlock}">
@@ -698,6 +876,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Horizontal" Margin="0 10">
                                     <TextBlock VerticalAlignment="Center"
@@ -711,6 +890,13 @@
                                FontSize="16"
                                Style="{StaticResource MaterialDesignBody2TextBlock}">Восприятие</TextBlock>
                                     <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Perception, Mode=TwoWay}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                            Grid.Column="2" Margin="10 10">
+                                    <TextBlock VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Style="{StaticResource MaterialDesignBody2TextBlock}">Значимость</TextBlock>
+                                    <materialDesign:RatingBar Foreground="#ffc107" Value="{Binding Path=Significance, Mode=TwoWay}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -768,22 +954,5 @@
                 </StackPanel>
             </StackPanel>
         </Expander>
-        <controls:StepButtonBar Grid.Row="1"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Center"
-                                Margin="0 10">
-            <controls:StepButtonBar.Back>
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="ArrowLeft" VerticalAlignment="Center" Margin="20 0"/>
-                    <TextBlock Text="Назад"/>
-                </StackPanel>
-            </controls:StepButtonBar.Back>
-            <controls:StepButtonBar.Continue>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Закончить"/>
-                    <materialDesign:PackIcon Kind="ArrowRight" VerticalAlignment="Center" Margin="20 0"/>
-                </StackPanel>
-            </controls:StepButtonBar.Continue>
-        </controls:StepButtonBar>
     </Grid>
 </UserControl>

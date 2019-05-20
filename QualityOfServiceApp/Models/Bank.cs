@@ -11,12 +11,15 @@ namespace QualityOfServiceApp.Models
         public string Neighborhood { get; set; }
         public string Locality { get; set; }
 
-        public ICollection<Service> Services { get; set; }
-        public ICollection<Client> Clients { get; set; }
+        public  ICollection<Service> Services { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
+        public  ICollection<Client> Clients { get; set; }
+
         public Bank()
         {
             Services = new List<Service>();
             Clients = new List<Client>();
+            Ratings = new List<Rating>();
         }
     }
 }
