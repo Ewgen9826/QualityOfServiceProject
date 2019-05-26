@@ -224,9 +224,10 @@
 
         <!--Убежденность-->
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
-                             Padding="20" Margin="20" HorizontalAlignment="Stretch" 
+                             Padding="20" Margin="20" HorizontalAlignment="Center" 
                              VerticalAlignment="Stretch"
-                             Grid.Row="1"
+                             Grid.Row="1" Grid.ColumnSpan="2"
+                             Grid.Column="0"
                              Background="#fff"
                              >
             <StackPanel Orientation="Vertical" 
@@ -291,9 +292,9 @@
 
         <!--Сочувствие-->
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
-                             Padding="20" Margin="20" HorizontalAlignment="Stretch" 
+                             Padding="20" Margin="20" HorizontalAlignment="Center" 
                              VerticalAlignment="Stretch"
-                             Grid.Row="1"
+                             Grid.Row="1" Grid.ColumnSpan="2"
                              Grid.Column="1"
                              Background="#fff"
                              >
@@ -356,71 +357,7 @@
 
             </StackPanel>
         </materialDesign:Card>
-
-        <!--Отзывчивость-->
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth1" 
-                             Padding="10" Margin="20" HorizontalAlignment="Stretch" 
-                             VerticalAlignment="Stretch" Width="Auto" Height="Auto"
-                             Grid.Column="2"
-                             Grid.Row="1"
-                             Background="#fff"
-                             >
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Глобальные коэффиценты качества"
-                           FontWeight="Bold"
-                           Foreground="{StaticResource PrimaryHueDarkBrush}"
-                           Style="{StaticResource MaterialDesignSubheadingTextBlock}"
-                           HorizontalAlignment="Center"/>
-
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20 10">
-                        <TextBlock Text="Ожидание:" Margin="10 0"
-                               Foreground="{StaticResource PrimaryHueDarkBrush}"
-                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                        <TextBlock Text="{Binding OverallExpectation, StringFormat={}{0:F}}" FontWeight="Bold"
-                              Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
-                        <TextBlock Text="Восприятие:"
-                               Foreground="{StaticResource PrimaryHueDarkBrush}"
-                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                        <TextBlock Text="{Binding OverallPerception, StringFormat={}{0:F}}" Margin="10 0" FontWeight="Bold"
-                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                    </StackPanel>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20 10">
-                        <TextBlock Text="Значимость:"
-                               Foreground="{StaticResource PrimaryHueDarkBrush}"
-                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                        <TextBlock Text="{Binding OverallSignificance, StringFormat={}{0:F}}" Margin="10 0" FontWeight="Bold"
-                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
-                        <TextBlock Text="Коэффицент качества:"
-                               Foreground="{StaticResource PrimaryHueDarkBrush}"
-                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                        <TextBlock Text="{Binding QualityFactor, StringFormat={}{0:F}}" Margin="10 0" FontWeight="Bold"
-                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                    </StackPanel>
-                </StackPanel>
-                
-
-                <StackPanel Orientation="Vertical" Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=StackPanel}}">
-                    <TextBlock Text="Вывод:" HorizontalAlignment="Center"
-                               Foreground="{StaticResource PrimaryHueDarkBrush}"
-                               Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
-                    <TextBlock Text="{Binding ResultMessage}"
-                               TextWrapping="Wrap" FontWeight="Bold" FontSize="13"
-                               Style="{StaticResource MaterialDesignBody2TextBlock}"/>
-                </StackPanel>
-
-            </StackPanel>
-        </materialDesign:Card>
-
+        
         <Button Grid.Row="2"  Padding="20 10" Width="auto" Height="auto"
                          Command="{Binding GoToAdminPageCommand}"
                     Style="{StaticResource MaterialDesignFlatButton}"
@@ -432,6 +369,21 @@
                                              Height="25" Width="25"/>
                 <TextBlock Text="Назад" Margin="10 0" 
                                FontSize="18"/>
+            </StackPanel>
+        </Button>
+        <Button Grid.Row="2" Padding="20 10"
+                Margin="0 10 10 10"
+                Width="Auto" Height="Auto"
+                HorizontalAlignment="Right"
+                Grid.Column="2"
+                Foreground="#fff"
+                Command="{Binding GoToReportPageCommand}">
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="File"
+                                         Margin="0 0 20 0"
+                                         Height="25" Width="25"/>
+                <TextBlock VerticalAlignment="Center"
+                           FontSize="18">Отчет</TextBlock>
             </StackPanel>
         </Button>
     </Grid>

@@ -150,6 +150,11 @@ namespace QualityOfServiceApp.ViewModels
             Header = "Общие результаты";
             ChangeViewModel(PageViewModels[7]);
         }
+        private void GoToReportResultPage(object obj)
+        {
+            Header = "Отчет";
+            ChangeViewModel(PageViewModels[8]);
+        }
         public MainWindowViewModel()
         {
             // Add available pages and set page
@@ -161,6 +166,7 @@ namespace QualityOfServiceApp.ViewModels
             PageViewModels.Add(new ServiceViewModel());
             PageViewModels.Add(new BankResultViewModel());
             PageViewModels.Add(new OverallResultViewModel());
+            PageViewModels.Add(new ReportViewModel());
 
             CurrentPageViewModel = PageViewModels[0];
             Header = "Главная";
@@ -173,6 +179,7 @@ namespace QualityOfServiceApp.ViewModels
             Mediator.Subscribe("GoToServicePage", GoToServicePage);
             Mediator.Subscribe("GoToBankResultPage", GoToBankResultPage);
             Mediator.Subscribe("GoToOverallResultPage", GoToOverallResultPage);
+            Mediator.Subscribe("GoToReportPage", GoToReportResultPage);
         }
     }
 }

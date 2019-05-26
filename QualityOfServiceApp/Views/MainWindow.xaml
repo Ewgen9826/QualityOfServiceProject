@@ -8,7 +8,7 @@
         xmlns:viewModels="clr-namespace:QualityOfServiceApp.ViewModels"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" 
         WindowStyle="None" WindowState="{Binding WindowState, Mode=TwoWay}"
-        Title="MainWindow" MinHeight="730" MinWidth="900">
+        Title="MainWindow" MinHeight="700" MinWidth="900">
     <Window.Resources>
         <!--HOME PAGE-->
         <DataTemplate DataType="{x:Type viewModels:HomeViewModel}">
@@ -41,6 +41,10 @@
         <!--OVERALL RESULT PAGE-->
         <DataTemplate DataType="{x:Type viewModels:OverallResultViewModel}">
             <pages:OverallResult/>
+        </DataTemplate>
+        <!--REPORT PAGE-->
+        <DataTemplate DataType="{x:Type viewModels:ReportViewModel}">
+            <pages:Report/>
         </DataTemplate>
     </Window.Resources>
     <Grid Background="#ffe4e4e4">

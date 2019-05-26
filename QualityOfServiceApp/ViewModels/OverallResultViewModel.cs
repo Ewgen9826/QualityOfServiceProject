@@ -18,6 +18,12 @@ namespace QualityOfServiceApp.ViewModels
             Mediator.Notify("GoToAdminPage", null);
         }));
 
+        private ICommand goToReportPageCommand;
+        public ICommand GoToReportPageCommand => goToReportPageCommand ?? (goToReportPageCommand = new RelayCommand(x =>
+        {
+            Mediator.Notify("GoToReportPage", null);
+        }));
+
         #region Materiality
         private double m_expectation;
         public double M_Expectation
@@ -495,94 +501,7 @@ namespace QualityOfServiceApp.ViewModels
         }
         #endregion
 
-        private double overallExpectation;
-        public double OverallExpectation
-        {
-            get => overallExpectation;
-            set
-            {
-                overallExpectation = value;
-                OnPropertyChanged("OverallExpectation");
-            }
-        }
-
-        private double overallPerception;
-        public double OverallPerception
-        {
-            get => overallPerception;
-            set
-            {
-                overallPerception = value;
-                OnPropertyChanged("OverallPerception");
-            }
-        }
-
-        private double overallSignificance;
-        public double OverallSignificance
-        {
-            get => overallSignificance;
-            set
-            {
-                overallSignificance = value;
-                OnPropertyChanged("OverallSignificance");
-            }
-        }
-
-        private double qualityFactor;
-        public double QualityFactor
-        {
-            get => qualityFactor;
-            set
-            {
-                qualityFactor = value;
-                OnPropertyChanged("QualityFactor");
-            }
-        }
-
-        private string resultMessage;
-        public string ResultMessage
-        {
-            get => resultMessage;
-            set
-            {
-                resultMessage = value;
-                OnPropertyChanged("ResultMessage");
-            }
-        }
-
-        private void GetOverallIndicators()
-        {
-            using (context=new ApplicationContext ())
-            {
-                var ratings = context.Ratings.ToList();
-                if (ratings.Count() == 0) return;
-                OverallExpectation = ratings.Average(r => r.Expectation);
-                overallPerception = ratings.Average(r => r.Perception);
-                OverallSignificance = ratings.Average(r => r.Significance);
-                QualityFactor = OverallPerception - OverallExpectation;
-                SetResutlMessage(QualityFactor);
-            }
-        }
-
-        public void SetResutlMessage(double qualityFactor)
-        {
-            if (qualityFactor == 0)
-            {
-                ResultMessage = "Уровень восприятия и ожидания совпадает. Успешный результат.Это свидетельствует о хорошем качестве оказываемых услуг, что будет способствовать сохранению и привлечению новых клиентов";
-            }
-            if (qualityFactor > 0)
-            {
-                ResultMessage = "Уровень восприятия выше ожидания. Успешный результат. Это свидетельствует о высоком качестве оказываемых услуг, что будет способствовать сохранению и привлечению новых клиентов";
-            }
-            if (qualityFactor >= -1 && qualityFactor < 0)
-            {
-                ResultMessage = "Уровень восприятия ниже ожидания. Удовлетворительный результат. Это свидетельствует о удовлетворительном качестве оказываемых услуг, клиенты не до конца довольны качеством обслуживания, однако это не критично";
-            }
-            if (qualityFactor < -1)
-            {
-                ResultMessage = "Уровень восприятия ниже ожидания. Неудовлетворительный результат. Это свидетельствует о низком качестве оказываемых услуг, это скажется на количестве клиентов, требуется повышение качества обслуживания";
-            }
-        }
+        
 
         public void UpdateBinding()
         {
@@ -603,9 +522,6 @@ namespace QualityOfServiceApp.ViewModels
             GetIndicatorsForResponsiveness();
             GetIndicatorsForSympathy();
             GetIndicatorsForConviction();
-
-            GetOverallIndicators();
-
         }
     }
 }
